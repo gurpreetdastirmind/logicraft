@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <!--
+    Basic Page Needs
+    ==================================================
+    -->
+   <meta charset="utf-8">
+   <title>Logicraft - Power Solutions</title>
+   <!--
+    Mobile Specific Metas
+    ==================================================
+    -->
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+   <!--
+    CSS
+    ==================================================
+    -->
+   <!-- Bootstrap-->
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <!-- Animation-->
+   <link rel="stylesheet" href="css/animate.css">
+   <!-- Morris CSS -->
+   <link rel="stylesheet" href="css/morris.css">
+   <!-- FontAwesome-->
+   <link rel="stylesheet" href="css/font-awesome.min.css">
+   <!-- Icon font-->
+   <link rel="stylesheet" href="css/icon-font.css">
+   <!-- Owl Carousel-->
+   <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+   
+   <link rel="stylesheet" href="css/owl.carousel.min.css">
+   <!-- Owl Theme -->
+   <link rel="stylesheet" href="css/owl.theme.default.min.css">
+   <!-- Colorbox-->
+   <link rel="stylesheet" href="css/colorbox.css">
+   <!-- Template styles-->
+   <link rel="stylesheet" href="css/style.css">
+   <!-- Responsive styles-->
+   <link rel="stylesheet" href="css/responsive.css">
+   
+   <!-- ===== FIXED: DUAL OVERLAY WITH NO WHITE FLASH BETWEEN SLIDES ===== -->
+   <style>
+      /* Fix for white flash - ensure carousel inner has proper background handling */
+      .carousel-inner {
+          background-color: #000; /* Dark background to prevent white flash */
+      }
+      
+      /* This adds a subtle dark overlay + gradient to make text readable without changing slider behavior */
+      .carousel-item {
+          position: relative;
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+          transition: transform .2s ease-in-out !important; /* Keep original Bootstrap transition */
+      }
+      
+      /* First overlay: semi-transparent dark layer - acts like a soft veil over the image */
+      .carousel-item::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.55);
+          z-index: 1;
+          pointer-events: none;
+      }
+      
+      /* Second overlay: subtle gradient from bottom to top - enhances text area visibility */
+      .carousel-item::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 55%;
+          background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+          z-index: 1;
+          pointer-events: none;
+      }
+      
+      /* Ensures slider content appears above the overlays */
+      .carousel-item .container {
+          position: relative;
+          z-index: 2;
+      }
+      
+      /* Extra text shadow for better clarity - keeps text crisp and readable */
+      .slider-content .slide-title,
+      .slider-content .slide-sub-title,
+      .slider-content .slider-description {
+          text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+      }
+      
+      /* Buttons slight shadow for better visibility */
+      .slider.btn {
+          box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      }
+      
+      /* Ensure smooth transitions without white flash */
+      .carousel-item-next, 
+      .carousel-item-prev, 
+      .carousel-item.active {
+          display: block;
+      }
+      
+      /* Fix for carousel during transition */
+      .carousel-fade .carousel-item {
+          opacity: 0;
+          transition-property: opacity;
+      }
+      
+      .carousel-fade .carousel-item.active,
+      .carousel-fade .carousel-item-next.carousel-item-left,
+      .carousel-fade .carousel-item-prev.carousel-item-right {
+          opacity: 1;
+      }
+      
+      .carousel-fade .active.carousel-item-left,
+      .carousel-fade .active.carousel-item-right {
+          opacity: 0;
+      }
+      
+      .carousel-fade .carousel-item-next,
+      .carousel-fade .carousel-item-prev,
+      .carousel-fade .carousel-item.active,
+      .carousel-fade .active.carousel-item-left,
+      .carousel-fade .active.carousel-item-prev {
+          transform: translateX(0);
+          transform: translate3d(0, 0, 0);
+      }
+
+      .logo-area img{
+         width:205px
+         
+      }
+      
+      /* ===== IMPROVED FOOTER LOGO STYLES - MATCHING REFERENCE IMAGES ===== */
+      .footer-logo {
+          margin-bottom: 20px;
+      }
+      
+      .footer-logo img {
+          max-width: 210px;
+          height: auto;
+          transition: all 0.3s ease;
+          filter:drop-shadow(0 0 2px #fff)
+        drop-shadow(0 0 4px #fff)
+        drop-shadow(0 0 6px #fff);
+      }
+      
+      /* Alternative if logo has dark background - ensure white/light appearance */
+      .footer .footer-logo {
+          display: inline-block;
+      }
+      
+      /* For better visibility, add subtle text logo fallback */
+      .footer-logo-text {
+          display: none;
+      }
+      
+      /* Ensure footer logo stands out against dark background */
+      .footer-main {
+          background: #0a2540;
+      }
+      
+      /* Additional style to match the reference image design */
+      .footer-about p {
+          color: #cbd5e0;
+          line-height: 1.6;
+          margin-top: 15px;
+      }
+      
+      /* Quick Links styling to match reference */
+      .footer-widget .list-dash li a {
+          color: #cbd5e0;
+          transition: all 0.3s ease;
+      }
+      
+      .footer-widget .list-dash li a:hover {
+          color: #ffb347;
+          padding-left: 5px;
+      }
+      
+      /* Company Locations styling improvement */
+      .footer-widget .ts-contact-info {
+          margin-bottom: 20px;
+      }
+      
+      .footer-widget .ts-contact-content p {
+          color: #cbd5e0;
+      }
+      
+      .footer-widget .ts-contact-title {
+          color: #fff;
+          font-size: 16px;
+          font-weight: 600;
+          margin-bottom: 5px;
+      }
+      
+      /* Subscribe button styling */
+      .newsletter-form .btn-primary {
+          background: #ffb347;
+          border: none;
+          color: #1e2f3e;
+      }
+      
+      .newsletter-form .btn-primary:hover {
+          background: #ff9f1c;
+      }
+      
+      /* Widget title styling */
+      .footer-widget .widget-title {
+          color: #fff;
+          font-weight: 600;
+          margin-bottom: 25px;
+          position: relative;
+          padding-bottom: 12px;
+      }
+      
+      .footer-widget .widget-title:after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 50px;
+          height: 2px;
+          background: #ffb347;
+      }
+      
+      /* Ensure proper spacing in footer columns */
+      .footer-widget {
+          margin-bottom: 30px;
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+          .footer-logo img {
+              max-width: 180px;
+          }
+      }
+   </style>
+   <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file.-->
+   <!--if lt IE 9
+    script(src='js/html5shiv.js')
+    script(src='js/respond.min.js')
+    -->
+</head>
+
+<body>
+
+   <div class="body-inner">
+
+      <div class="site-top-2">
+         <header class="header nav-down" id="header-2">
+            <div class="container">
+               <div class="row">
+                  <div class="logo-area clearfix">
+                     <div class="logo col-lg-3 col-md-12">
+                        <a href="index.html">
+                           <img src="images\def2df14-14ee-4f1c-8ed5-0747fa291008_removalai_preview.png" alt="">
+                        </a>
+                     </div>
+                     <!-- logo end-->
+                     <div class="col-lg-9 col-md-12 pull-right">
+                        <ul class="top-info unstyled">
+                           <li><span class="info-icon"><i class="icon icon-phone3"></i></span>
+                              <div class="info-wrapper">
+                                 <p class="info-title">24/7 Response Time</p>
+                                 <p class="info-subtitle">(+91) 98550-20522, 99884-48188</p>
+                              </div>
+                           </li>
+                           <li><span class="info-icon"><i class="icon icon-envelope"></i></span>
+                              <div class="info-wrapper">
+                                 <p class="info-title">Send Your Query</p>
+                                 <p class="info-subtitle">rajkumar37429@gmail.com</p>
+                              </div>
+                           </li>
+                           
+                        </ul>
+                     </div>
+                     <!-- Col End-->
+                  </div>
+                  <!-- Logo Area End-->
+               </div>
+            </div>
+            <!-- Container end-->
+            <div class="site-nav-inner site-navigation navigation navdown">
+               <div class="container">
+                  <nav class="navbar navbar-expand-lg ">
+                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="icon icon-menu"></i></span></button>
+                     <!-- End of Navbar toggler-->
+                     <div class="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
+                        <ul class="navbar-nav">
+                           <li class="nav-item">
+                              <a class="nav-link" href="index.html">Home</a>
+                           </li>
+                           <!-- li end-->
+                           <li class="nav-item">
+                              <a class="nav-link" href="about.html">About Us</a>
+                           </li>
+                           <!-- li end-->
+                           <li class="nav-item dropdown"><a class="nav-link" href="#" data-toggle="dropdown">Industrial Engine<i class="fa fa-angle-down"></i></a>
+                              <ul class="dropdown-menu" role="menu">
+                                 <li><a href="project-all.html">Projects All</a></li>
+                                 <li><a href="#">Generator</a></li>
+                                 <li><a href="#">Motors</a></li>
+                                 <li><a href="#">Inverters</a></li>
+                                 <li><a href="#">Electricals things</a></li>
+                                 <li><a href="#">Technical Specification</a></li>
+
+                              </ul>
+                           </li>
+                           <!-- li end-->
+                            <li class="nav-item dropdown"><a class="nav-link" href="#" data-toggle="dropdown">Services<i class="fa fa-angle-down"></i></a>
+                              <ul class="dropdown-menu" role="menu">
+                                 <li><a href="service.html">Services All</a></li>
+                                <li><a href="#" class="nav-service-link" data-service="preventive">Preventive Maintenance</a></li>
+                                 <li><a href="#" class="nav-service-link" data-service="valueAdded">Value Added Service</a></li>
+                                 <li><a href="#" class="nav-service-link" data-service="amcWarranty">AMC's & Warranty</a></li>
+                                 <li><a href="#" class="nav-service-link" data-service="installation">Installation</a></li>
+                                 <li><a href="#" class="nav-service-link" data-service="spareParts">Spare Parts</a></li>
+                              </ul>
+                           </li>
+                           <!-- li end-->
+                            <li class="nav-item">
+                              <a class="nav-link" href="gallery.html">Gallery</a>
+                           </li>
+                           <!-- li end-->
+               
+                          
+                           <li class="nav-item dropdown">
+                                 <a href="contact.html">Contact</a>
+                           </li>
+                        </ul>
+                        <!--Nav ul end-->
+                     </div>
+                     <a href="contact.html" class="top-right-btn btn btn-primary">Request a Quote</a>
+                     <!-- Top bar btn -->
+                  </nav>
+                  <!-- Collapse end-->
+
+                  
+                  
+               </div>
+            </div>
+            <!-- Site nav inner end-->
+         </header>
+         <!-- Header end-->
+      </div>
+
+      <div class="carousel slide carousel-fade" id="main-slide" data-ride="carousel" data-interval="5000">
+         <!-- Indicators-->
+         <ol class="carousel-indicators visible-lg visible-md">
+            <li class="active" data-target="#main-slide" data-slide-to="0"></li>
+            <li data-target="#main-slide" data-slide-to="1"></li>
+            <li data-target="#main-slide" data-slide-to="2"></li>
+         </ol>
+         <!-- Indicators end-->
+         <!-- Carousel inner-->
+         <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image:url(images/background-img.png);">
+               <div class="container">
+                  <div class="slider-content text-left">
+                     <div class="col-md-12">
+                        <h2 class="slide-title title-light">Power Solutions You Can Trust</h2>
+                        <h3 class="slide-sub-title">Reliable Generator Services</h3>
+                        <p class="slider-description lead"> Delivering uninterrupted power with high-quality generators<br/>
+                  backed by years of industry expertise.
+                        <p><a class="slider btn btn-primary" href="#">Know More</a><a class="slider btn btn-border" href="#">View Services</a></p>
+                     </div>
+                     <!-- Col end-->
+                  </div>
+                  <!-- Slider content end-->
+               </div>
+               <!-- Container end-->
+            </div>
+            <!-- Carousel item 1 end-->
+            <div class="carousel-item" style="background-image:url(images/background-img4.png);">
+               <div class="container">
+                  <div class="slider-content text-center">
+                     <div class="col-md-12">
+                        <h2 class="slide-title title-light">Your Power Backup Partner</h2>
+                        <h3 class="slide-sub-title">We Keep Your Business Running</h3>
+                        <p class="slider-description lead"> From industrial generators to electrical solutions,<br/>
+                        we ensure continuous performance and reliability. </p>
+                        <p><a class="slider btn btn-primary" href="#">Our Services</a></p>
+                     </div>
+                     <!-- Col end-->   
+                  </div>
+                  <!-- Slider content end-->
+               </div>
+               <!-- Container end-->
+            </div>
+            <!-- Carousel item 2 end-->
+            <div class="carousel-item" style="background-image:url(images/background-img5.png);">
+               <div class="container">
+                  <div class="slider-content text-right">
+                     <div class="col-md-12">
+                        <h2 class="slide-title title-light">36 years of experience</h2>
+                        <h3 class="slide-sub-title">Strong & Reliable Distribution Network</h3>
+                           <p class="slider-description lead">
+                              We provide complete generator solutions including installation,<br/>
+                              maintenance, and support across multiple locations.
+                           </p>
+                        <p><a class="slider btn btn-primary" href="#">View Services</a></p>
+                     </div>
+                     <!-- Col end-->
+                  </div>
+                  <!-- Slider content end-->
+               </div>
+               <!-- Container end-->
+            </div>
+            <!-- Carousel item 3 end-->
+         </div>
+         <!-- Carousel inner end-->
+         <!-- Controllers--><a class="left carousel-control carousel-control-prev" href="#main-slide" data-slide="prev"><span><i class="fa fa-angle-left"></i></span></a>
+         <a class="right carousel-control carousel-control-next" href="#main-slide" data-slide="next"><span><i class="fa fa-angle-right"></i></span></a>
+      </div>
+      <!-- Carousel end-->
+      
+      <section id="ts-features-light" class="ts-features-light">
+         <div class="container">
+            <div class="row feature-light-row">
+               <div class="col-md-4 text-center">
+                  <div class="ts-feature-box">
+                     <div class="ts-feature-info">
+                        <div class="feature-img">
+                           <img src="images/icon/service-1.png" alt="" />
+                        </div>
+                        <h3 class="ts-feature-title">Reliable Services</h3>
+                        <p>We deliver dependable and high-quality power solutions with consistent performance, ensuring uninterrupted operations for your business.</p>
+                        <a class="slider btn btn-primary" href="#">Read More</a>
+                     </div>
+                  </div>
+                  <!-- feature box-1 end-->
+               </div>
+               <!-- col-1 end-->
+               <div class="col-md-4 text-center border-left">
+                  <div class="ts-feature-box">
+                     <div class="ts-feature-info">
+                        <div class="feature-img">
+                           <img src="images/icon/service-2.png" alt="" />
+                        </div>
+                        <h3 class="ts-feature-title">Global Coverage</h3>
+                        <p>Our wide service network allows us to provide efficient support across multiple locations, ensuring timely assistance wherever you need it.</p>
+                        <a class="slider btn btn-primary" href="#">Read More</a>
+                     </div>
+                  </div>
+                  <!-- feature box-2 end-->
+               </div>
+               <!-- col-2 end-->
+               <div class="col-md-4 text-center border-left">
+                  <div class="ts-feature-box">
+                     <div class="ts-feature-info">
+                        <div class="feature-img">
+                           <img src="images/icon/service-3.png" alt="" />
+                        </div>
+                        <!--<i class="icon icon-clock3"></i>-->
+                        <h3 class="ts-feature-title">Cost Savings</h3>
+                        <p>Our energy-efficient solutions and optimized systems help reduce operational costs while maintaining maximum performance and reliability.</p>
+                        <a class="slider btn btn-primary" href="#">Read More</a>
+                     </div>
+                  </div>
+                  <!-- feature box-2 end-->
+               </div>
+               <!-- col-3 end-->
+            </div>
+         </div>
+      </section>
+      <!-- ts-feature light end -->
+
+      <section class="ts-service-area service-area-pattern" id="ts-service-area">
+  <div class="service-area-bg">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h2 class="section-title">
+            <span>Power You Can Trust</span>Why Choose Us?
+          </h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- LEFT SIDE -->
+        <div class="col-lg-4 col-md-12">
+          <div class="ts-service-wrapper">
+
+            <div class="ts-service-box">
+              <div class="ts-service-box-img">
+                <img src="images/icon/why-1.png" alt="" />
+              </div>
+              <div class="ts-service-box-info">
+                <h3 class="service-box-title">99% Power Reliability</h3>
+                <p>We ensure uninterrupted power supply with high-performance generators.</p>
+              </div>
+            </div>
+
+            <div class="gap-15"></div>
+
+            <div class="ts-service-box">
+              <div class="ts-service-box-img">
+                <img src="images/icon/why-2.png" alt="" />
+              </div>
+              <div class="ts-service-box-info">
+                <h3 class="service-box-title">Safe & Durable Equipment</h3>
+                <p>All generators are tested for safety, durability, and long-term usage.</p>
+              </div>
+            </div>
+
+            <div class="gap-15"></div>
+
+            <div class="ts-service-box">
+              <div class="ts-service-box-img">
+                <img src="images/icon/why-4.png" alt="" />
+              </div>
+              <div class="ts-service-box-info">
+                <h3 class="service-box-title">Expert Installation</h3>
+                <p>Professional setup and maintenance by experienced technicians.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- CENTER IMAGE -->
+        <div class="col-lg-4 col-md-12 text-center">
+          <span class="service-img">
+            <img class="img-fluid" src="images/Industrial-generator-setup-and-tools.png" alt="Generator Service" />
+          </span>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="col-lg-4 col-md-12">
+          <div class="ts-service-wrapper ml-lg-auto">
+
+            <div class="ts-service-box">
+              <div class="ts-service-box-img">
+                <img src="images/icon/why-3.png" alt="" />
+              </div>
+              <div class="ts-service-box-info">
+                <h3 class="service-box-title">Real-time Monitoring</h3>
+                <p>Track generator performance and fuel usage in real-time.</p>
+              </div>
+            </div>
+
+            <div class="gap-15"></div>
+
+            <div class="ts-service-box">
+              <div class="ts-service-box-img">
+                <img src="images/icon/why-5.png" alt="" />
+              </div>
+              <div class="ts-service-box-info">
+                <h3 class="service-box-title">Wide Service Network</h3>
+                <p>Available across multiple locations with fast support service.</p>
+              </div>
+            </div>
+
+            <div class="gap-15"></div>
+
+            <div class="ts-service-box">
+              <div class="ts-service-box-img">
+                <img src="images/icon/why-6.png" alt="" />
+              </div>
+              <div class="ts-service-box-info">
+                <h3 class="service-box-title">24/7 Maintenance Support</h3>
+                <p>Quick response team available anytime for emergency repairs.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+      <!-- Service Section end-->
+      
+      <section class="ts-services solid-bg" id="ts-services">
+         <div class="container">
+            <div class="row text-center">
+               <div class="col-md-12">
+                  <h2 class="section-title"><span>What We Do</span>Our Services</h2>
+               </div>
+            </div>
+            <!-- Title row end-->
+            <div class="row ts-service-row-box">
+               <div class="col-lg-4 col-md-12">
+                  <div class="ts-service-box">
+                     <div class="ts-service-image-wrapper">
+                        <img class="img-fluid" src="images/generator.jpg" alt="">
+                     </div>
+                     <div class="ts-service-content">
+                        <h3 class="service-title">Generator</h3>
+<p>We provide reliable and high-performance generator solutions for industrial and commercial needs. Our generators ensure uninterrupted power supply, fuel efficiency, and long-lasting durability with complete installation and maintenance support.</p>
+                        <p><a class="link-more" href="#">Read More<i class="icon icon-right-arrow2"></i></a></p>
+                     </div>
+                  </div>
+                  <!-- Service1 end-->
+               </div>
+               <!-- Col end-->
+               <div class="col-lg-4 col-md-12">
+                  <div class="ts-service-box">
+                     <div class="ts-service-image-wrapper">
+                        <img class="img-fluid" src="images/electric-motor.jpg" alt="" >
+                     </div>
+                     <div class="ts-service-content">
+                        <h3 class="service-title">Motors</h3>
+                        <p>We offer a wide range of high-quality electric motors designed for efficiency and durability. Our motors are suitable for various industrial applications, ensuring smooth operation, energy savings, and minimal maintenance.</p>
+                        <p><a class="link-more" href="#">Read More<i class="icon icon-right-arrow2"></i></a></p>
+                     </div>
+                  </div>
+                  <!-- Service1 end-->
+               </div>
+               <!-- Col end-->
+               <div class="col-lg-4 col-md-12">
+                  <div class="ts-service-box">
+                     <div class="ts-service-image-wrapper">
+                        <img class="img-fluid" src="images/power-invertor.jpg" alt="">
+                     </div>
+                     <div class="ts-service-content">
+                        <h3 class="service-title">Inverters</h3>
+                        <p>Our advanced inverter systems provide seamless power backup and energy-efficient performance. Designed for both residential and industrial use, they ensure stable power supply with smart control and long battery life.</p>
+                        <p><a class="link-more" href="#">Read More<i class="icon icon-right-arrow2"></i></a></p>
+                     </div>
+                  </div>
+                  <!-- Service1 end-->
+               </div>
+               <!-- Col end-->
+            </div>
+            <!-- Content row end-->
+            <div class="gap-60"></div>
+            <div class="row ts-service-row-box">
+               <div class="col-lg-4 col-md-12">
+                  <div class="ts-service-box">
+                     <div class="ts-service-image-wrapper">
+                        <img class="img-fluid" src="images/electrical-thing.jpg" alt="">
+                     </div>
+                     <div class="ts-service-content">
+                        <h3 class="service-title">Electricals things</h3>
+                        <p>We provide a wide range of electrical products including wiring materials, switches, panels, and accessories. Our solutions are reliable, durable, and suitable for both residential and industrial applications.</p>
+                        <p><a class="link-more" href="#">Read More<i class="icon icon-right-arrow2"></i></a></p>
+                     </div>
+                  </div>
+                  <!-- Service1 end-->
+               </div>
+               <!-- Col end-->
+               <div class="col-lg-4 col-md-12">
+                  <div class="ts-service-box">
+                     <div class="ts-service-image-wrapper">
+                        <img class="img-fluid" src="images/technical-specification.jpg" alt="">
+                     </div>
+                     <div class="ts-service-content">
+                        <h3 class="service-title">Technical Specification</h3>
+                        <p>We offer complete technical guidance and specifications for generators, motors, and electrical equipment. Our team ensures you get accurate details for proper installation, operation, and performance.</p>
+                        <p><a class="link-more" href="#">Read More<i class="icon icon-right-arrow2"></i></a></p>
+                     </div>
+                  </div>
+                  <!-- Service1 end-->
+               </div>
+               <!-- Col end-->
+               <div class="col-lg-4 col-md-12">
+                  <div class="ts-service-box">
+                     <div class="ts-service-image-wrapper">
+                        <img class="img-fluid" src="images/spare-parts.jpg" alt="">
+                     </div>
+                     <div class="ts-service-content">
+                        <h3 class="service-title">New and Old Spare Parts Sold </h3>
+                        <p>We deal in both new and used spare parts for generators and machinery. All parts are quality-checked to ensure performance and cost-effective solutions for your needs.</p>
+                        <p><a class="link-more" href="#">Read More<i class="icon icon-right-arrow2"></i></a></p>
+                     </div>
+                     
+                  </div>
+                  <!-- Service1 end-->
+               </div>
+               <!-- Col end-->
+            </div>
+            <!-- Content row end-->
+         </div>
+         <!-- Container end-->
+      </section>
+      <!-- Service end-->
+      
+      <section class="testimonial-area" id="testimonial-area">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-6">
+                  <div class="accordion-title">
+                     <h3 class="column-title"><span>Our FAQ</span> Frequently Asked Questions</h3>
+                  </div>
+                  <div id="accordion" class="accordion-area">
+                     <div class="card">
+                        <div class="card-header" id="headingOne">
+                           <h5 class="mb-0">
+                              <a href="#" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                 What do I get when my account is paid off?
+                              </a>
+                           </h5>
+                        </div>
+                        <div class="collapse show" id="collapseOne" aria-labelledby="headingOne" data-parent="#accordion">
+                           <div class="card-body">
+                              <p>A business strategy is the means by which it sets out to achieve its desired ends. You have
+                                 ideas, goals, and dreams. We have a culturally diverse.</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card">
+                        <div class="card-header" id="headingThree">
+                           <h5 class="mb-0">
+                              <a href="#" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                 My payment was postmarked on the due date, why is it considered late?
+                              </a>
+                           </h5>
+                        </div>
+                        <div class="collapse" id="collapseThree" aria-labelledby="headingThree" data-parent="#accordion">
+                           <div class="card-body">
+                              <p>A business strategy is the means by which it sets out to achieve its desired ends. You have
+                                 ideas, goals, and dreams. We have a culturally diverse.</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card">
+                        <div class="card-header" id="headingFour">
+                           <h5 class="mb-0">
+                              <a href="#" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                 I sent my payment on time, but it has not been credited to my account?
+                              </a>
+                           </h5>
+                        </div>
+                        <div class="collapse" id="collapseFour" aria-labelledby="headingFour" data-parent="#accordion">
+                           <div class="card-body">
+                              <p>A business strategy is the means by which it sets out to achieve its desired ends. You have
+                                 ideas, goals, and dreams. We have a culturally diverse.</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Accordion end -->
+               </div>
+               <!-- Col end-->
+               <div class="col-lg-6 testimonial-client">
+                  <h2 class="column-title "><span>What They Said</span>  Client Testimonials</h2>
+                  <div class="owl-carousel owl-theme testimonial-slide owl-dark" id="testimonial-slide">
+                     <div class="item">
+                        <div class="quote-item quote-square"><span class="quote-text">We provide reliable and high-performance generator solutions for industrial and commercial needs. Our generators ensure uninterrupted power supply, fuel efficiency, and long-lasting durability with complete installation and maintenance support.</span>
+                           <div class="quote-item-footer">
+                              <img class="testimonial-thumb" src="images/oip1.webp" alt="testimonial">
+                              <div class="quote-item-info">
+                                 <p class="quote-author">RajKumar</p><span class="quote-subtext">Chairman, B.R. METALS & GEN. SET COMPANY</span>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Quote item end-->
+                     </div>
+                     <!-- Item 1 end-->
+                     <div class="item">
+                        <div class="quote-item quote-square"><span class="quote-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inci done idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitoa tion ullamco laboris nisi aliquip consequat.</span>
+                           <div class="quote-item-footer">
+                              <img class="testimonial-thumb" src="images/clients/testimonial2.png" alt="testimonial">
+                              <div class="quote-item-info">
+                                 <h3 class="quote-author">Weldon Cash</h3><span class="quote-subtext">CFO, First Choice</span>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Quote item end-->
+                     </div>
+                     <!-- Item 2 end-->
+                     <div class="item">
+                        <div class="quote-item quote-square"><span class="quote-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inci done idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitoa tion ullamco laboris nisi ut commodo consequat.</span>
+                           <div class="quote-item-footer">
+                              <img class="testimonial-thumb" src="images/clients/testimonial3.png" alt="testimonial">
+                              <div class="quote-item-info">
+                                 <h3 class="quote-author">Minter Puchan</h3><span class="quote-subtext">Director, AKT</span>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Quote item end-->
+                     </div>
+                     <!-- Item 3 end-->
+                  </div>
+                  <!-- Testimonial carousel end-->
+               </div>
+               <!-- Col end-->
+            </div>
+            <!-- Content row end-->
+         </div>
+         <!-- Container end-->
+      </section>
+      <!-- Quote area end-->
+      
+      <section id="ts-facts-area" class="ts-facts-area-bg bg-overlay">
+         <div class="container">
+            <div class="row ">
+               <div class="col-lg-5 col-md-12 column-left-title">
+                  <h2 class="column-title">36 Years Experience in Generator Manufacturing Field.</h2>
+               </div>
+               <div class="col-lg-7 col-md-12">
+                  <div class="container">
+                     <div class="row text-center">
+                        <div class="col-lg-4 col-md-4">
+                           <div class="ts-facts-bg">
+                              <img src="images/icon/fact1.png" alt="" />
+                              <div class="ts-facts-content">
+                                 <h4 class="ts-facts-num"><span class="counterUp">1</span></h4>
+                                 <p class="facts-desc">Office Worldwide</p>
+                              </div>
+                           </div>
+                           <!-- Facts 1 end-->
+                        </div>
+                        <!-- Col 1 end-->
+                        <div class="col-lg-4 col-md-4">
+                           <div class="ts-facts-bg">
+                              <img src="images/icon/fact2.png" alt="" />
+                              <div class="ts-facts-content">
+                                 <h4 class="ts-facts-num"><span class="counterUp">467</span></h4>
+                                 <p class="facts-desc">KM Per Year</p>
+                              </div>
+                           </div>
+                           <!-- Facts 2 end-->
+                        </div>
+                        <!-- Col 2 end-->
+                        <div class="col-lg-4 col-md-4">
+                           <div class="ts-facts-bg">
+                              <img src="images/icon/fact3.png" alt="" />
+                              <div class="ts-facts-content">
+                                 <h4 class="ts-facts-num"><span class="counterUp">85</span></h4>
+                                 <p class="facts-desc">Sells of Generator Per Year </p>
+                              </div>
+                           </div>
+                           <!-- Facts 3 end-->
+                        </div>
+                        <!-- Col 3 end-->
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- Row end-->
+         </div>
+         <!-- Container 2 end-->
+      </section>
+      <!-- Facts Area End -->
+      
+            
+      
+      <section class="quote-area solid-bg" id="quote-area">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-5">
+                  <div class="quote_form">
+                    
+                     <div class="quote-img">
+                        <img class="img-fluid" src="images/Industrial-power-solutions-on-display.png" alt="img">
+                     </div>
+                  </div>
+                  <!-- Quote form end-->
+               </div>
+               <!-- Col end-->
+               <div class="col-lg-7 qutoe-form-inner-le">
+                     <form class="contact-form" id="contact-form" method="POST">
+                        <h2 class="column-title "><span>We are always ready</span> Request a call back</h2>
+                        <div class="error-container"></div>
+                        <div class="row">
+                           <div class="col-lg-12">
+                              <div class="form-group">
+                                 <input class="form-control form-name" id="name" name="name" placeholder="Full Name" type="text" required="">
+                              </div>
+                           </div>
+                           <!-- Col end-->
+                           <div class="col-lg-12">
+                              <div class="form-group">
+                                 <input class="form-control form-website" id="number" name="number" placeholder="Phone-no" type="phone-number" required="">
+                              </div>
+                           </div>
+                           <div class="col-lg-12">
+                              <div class="form-group">
+                                 <input class="form-control form-email" id="email" name="email" placeholder="Email" type="email" required="">
+                              </div>
+                           </div>
+                           <div class="col-lg-12">
+                              <div class="form-group">
+                                 <textarea class="form-control form-message required-field" id="message" placeholder="Comments" rows="8"></textarea>
+                              </div>
+                           </div>
+                           <!-- Col 12 end-->
+                        </div>
+                        <!-- Form row end-->
+                        <div class="text-right">
+                           <button class="btn btn-primary tw-mt-30" type="submit">Contact US</button>
+                        </div>
+                     </form>
+                     <!-- Form end-->
+               </div>
+               <!-- Col end-->
+            </div>
+            <!-- Content row end-->
+         </div>
+         <!-- Container end-->
+      </section>
+      <!-- Quote area end-->
+
+
+      <section class="clients-area " id="clients-area">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12 owl-carousel owl-theme text-center partners" id="partners-carousel">
+                  <figure class="item partner-logo">
+                     <a href="#">
+                        <img class="img-fluid" src="images/clients/client1.png" alt="">
+                     </a>
+                  </figure>
+                  <figure class="item partner-logo">
+                     <a href="#">
+                        <img class="img-fluid" src="images/clients/client2.png" alt="">
+                     </a>
+                  </figure>
+                  <figure class="item partner-logo">
+                     <a href="#">
+                        <img class="img-fluid" src="images/clients/client3.png" alt="">
+                     </a>
+                  </figure>
+                  <figure class="item partner-logo">
+                     <a href="#">
+                        <img class="img-fluid" src="images/clients/client4.png" alt="">
+                     </a>
+                  </figure>
+                  <figure class="item partner-logo">
+                     <a href="#">
+                        <img class="img-fluid" src="images/clients/client5.png" alt="">
+                     </a>
+                  </figure>
+                  <figure class="item partner-logo last">
+                     <a href="#">
+                        <img class="img-fluid" src="images/clients/client6.png" alt="">
+                     </a>
+                  </figure>
+               </div>
+               <!-- Owl carousel end-->
+            </div>
+            <!-- Content row end-->
+         </div>
+         <!-- Container end-->
+      </section>
+      <!-- Partners end-->
+      
+ 
+      <!-- Call to action end -->
+
+      <!-- Footer start-->
+      <footer class="footer" id="footer">
+         <div class="footer-main bg-overlay">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-4 col-md-12 footer-widget footer-about">
+                     <div class="footer-logo">
+                        <img src="images/logo12.png" alt="Logicraft - Power Solutions">
+                     </div>
+                     <p>B.R. Metal & Gen Set is a trusted name in generator solutions, industrial engines, and electrical equipment since 1990. We provide reliable power backup, installation, maintenance, and genuine spare parts with 24/7 support.</p>
+                     
+                   
+                  </div>
+                  <!-- About us end-->
+                  <div class="col-lg-4 col-md-6 footer-widget">
+                     <h3 class="widget-title">Quick Links</h3>
+                     <ul class="list-dash">
+                      <li><a href="about.html">About Us</a></li>
+                      <li><a href="service.html">Our Services</a></li>
+                      <li><a href="project-all.html">Projects</a></li>
+                      <li><a href="contact.html">Consultation</a></li>
+                      <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-4 col-md-6 footer-widget">
+                     <h3 class="widget-title">Company Locations</h3>
+                     <div class="ts-contact-info"><span class="ts-contact-icon float-left"><i class="icon icon-map-marker2"></i></span>
+                        <div class="ts-contact-content">
+                           <h3 class="ts-contact-title">Address</h3>
+                           <p>23, Street no 2, Gurudwara Gobindsar, <br>New Shimla Puri, Ludhiana - 141003</p>
+                        </div>
+                        <!-- Contact content end-->
+                     </div>
+                     
+                     <div class="ts-contact-info last"><span class="ts-contact-icon float-left"><i class="icon icon-envelope"></i></span>
+                        <div class="ts-contact-content">
+                           <h3 class="ts-contact-title">Email Address</h3>
+                           <p>rajkumar37429@gmail.com</p>
+                        </div>
+                        <!-- Contact content end-->
+                     </div>
+                     <div class="ts-contact-info"><span class="ts-contact-icon float-left"><i class="icon icon-phone3"></i></span>
+                        <div class="ts-contact-content">
+                           <h3 class="ts-contact-title">Phone Number</h3>
+                           <p>98550-20522, 99884-48188 , 81969-55100</p>
+                        </div>
+                        <!-- Contact content end-->
+                     </div>
+                  </div>
+               </div>
+               <!-- Content row end-->
+            </div>
+            <!-- Container end-->
+         </div>
+         <!-- Footer Main-->
+         <div class="copyright">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-6 col-md-12">
+                     <div class="copyright-info"><span>Copyright © 2026  | Powered by <a href="https://astirmind.com">Astirmind Software Solutions</a></span></div>
+                  </div>
+        
+               </div>
+               <!-- Row end-->
+            </div>
+            <!-- Container end-->
+         </div>
+         <!-- Copyright end-->
+      </footer>
+      <!-- Footer end-->
+
+      <div class="back-to-top affix" id="back-to-top" data-spy="affix" data-offset-top="10">
+         <button class="btn btn-primary" title="Back to Top"><i class="fa fa-angle-double-up"></i>
+            <!-- icon end-->
+         </button>
+         <!-- button end-->
+      </div>
+      <!-- End Back to Top-->
+
+      <!--
+      Javascript Files
+      ==================================================
+      -->
+      <!-- initialize jQuery Library-->
+      <script type="text/javascript" src="js/jquery.js"></script>
+       
+       
+      <!-- Bootstrap jQuery-->
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <!-- Owl Carousel-->
+      <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+      <!-- Counter-->
+      <script type="text/javascript" src="js/jquery.counterup.min.js"></script>
+      <!-- Waypoints-->
+      <script type="text/javascript" src="js/waypoints.min.js"></script>
+      <!-- Color box-->
+      <script type="text/javascript" src="js/jquery.colorbox.js"></script>
+       
+        
+      <!-- Template custom-->
+      <script type="text/javascript" src="js/custom.js"></script>
+
+
+   </div>
+   <!--Body Inner end-->
+   <script>
+   $(document).ready(function(){
+      
+      // Function to redirect to service page with hash parameter
+      function goToServicePage(serviceId) {
+         // Store the service to open in sessionStorage
+         sessionStorage.setItem('openService', serviceId);
+         // Redirect to service.html page
+         window.location.href = 'service.html';
+      }
+      
+      // Handle navbar dropdown service links
+      $('.nav-item.dropdown .dropdown-menu a').each(function() {
+         var linkText = $(this).text().trim();
+         
+         if(linkText === "Preventive Maintenance") {
+            $(this).attr('href', 'javascript:void(0)');
+            $(this).on('click', function(e) {
+               e.preventDefault();
+               goToServicePage('preventive');
+            });
+         }
+         else if(linkText === "Value Added Service") {
+            $(this).attr('href', 'javascript:void(0)');
+            $(this).on('click', function(e) {
+               e.preventDefault();
+               goToServicePage('valueAdded');
+            });
+         }
+         else if(linkText === "AMC's & Warranty") {
+            $(this).attr('href', 'javascript:void(0)');
+            $(this).on('click', function(e) {
+               e.preventDefault();
+               goToServicePage('amcWarranty');
+            });
+         }
+         else if(linkText === "Installation") {
+            $(this).attr('href', 'javascript:void(0)');
+            $(this).on('click', function(e) {
+               e.preventDefault();
+               goToServicePage('installation');
+            });
+         }
+         else if(linkText === "Spare Parts") {
+            $(this).attr('href', 'javascript:void(0)');
+            $(this).on('click', function(e) {
+               e.preventDefault();
+               goToServicePage('spareParts');
+            });
+         }
+         else if(linkText === "Services All") {
+            $(this).attr('href', 'javascript:void(0)');
+            $(this).on('click', function(e) {
+               e.preventDefault();
+               // Just go to service page with default view
+               window.location.href = 'service.html';
+            });
+         }
+      });
+      
+      // Also handle any "Services All" from the main Services dropdown if needed
+      $('.nav-item.dropdown > a').each(function() {
+         if($(this).text().trim() === "Services") {
+            $(this).on('click', function(e) {
+               // Allow normal dropdown behavior, do nothing extra
+               return true;
+            });
+         }
+      });
+      
+   });
+</script>
+
+<script>
+document.getElementById("contact-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        number: document.getElementById("number").value,
+        message: document.getElementById("message").value
+    };
+
+    try {
+        const response = await fetch("http://localhost:5000/send-email", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if(result.success){
+            alert("✅ Message Sent Successfully!");
+            document.getElementById("contact-form").reset();
+        } else {
+            alert("❌ Failed to send message");
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("⚠️ Server Error");
+    }
+});
+</script>
+   
+</body>
+
+</html>

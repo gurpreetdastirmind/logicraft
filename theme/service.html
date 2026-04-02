@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <!--
+    Basic Page Needs
+    ==================================================
+    -->
+   <meta charset="utf-8">
+   <title>Mahindra Powerol - Value Added Services</title>
+   <!--
+    Mobile Specific Metas
+    ==================================================
+    -->
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+   <!--
+    CSS
+    ==================================================
+    -->
+   <!-- Bootstrap-->
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <!-- Animation-->
+   <link rel="stylesheet" href="css/animate.css">
+   <!-- Morris CSS -->
+   <link rel="stylesheet" href="css/morris.css">
+   <!-- FontAwesome-->
+   <link rel="stylesheet" href="css/font-awesome.min.css">
+   <!-- Icon font-->
+   <link rel="stylesheet" href="css/icon-font.css">
+   <!-- Owl Carousel-->
+   <link rel="stylesheet" href="css/owl.carousel.min.css">
+   <!-- Owl Theme -->
+   <link rel="stylesheet" href="css/owl.theme.default.min.css">
+   <!-- Colorbox-->
+   <link rel="stylesheet" href="css/colorbox.css">
+   <!-- Template styles-->
+   <link rel="stylesheet" href="css/style.css">
+   <!-- Responsive styles-->
+   <link rel="stylesheet" href="css/responsive.css">
+   
+   <style>
+      /* Additional custom styles to match the provided content exactly */
+      .service-detail-section {
+         padding: 70px 0;
+         background: #fff;
+      }
+      .service-sidebar {
+         background: #f9f9fc;
+         border-radius: 8px;
+         padding: 30px 25px;
+         box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+         margin-bottom: 30px;
+      }
+      .service-sidebar ul {
+         list-style: none;
+         padding-left: 0;
+         margin-bottom: 0;
+      }
+      .service-sidebar ul li {
+         margin-bottom: 12px;
+         border-bottom: 1px solid #eaeef5;
+         padding-bottom: 12px;
+      }
+      .service-sidebar ul li:last-child {
+         border-bottom: none;
+         margin-bottom: 0;
+         padding-bottom: 0;
+      }
+      .service-sidebar ul li a {
+         font-size: 16px;
+         font-weight: 600;
+         color: #1e2a3e;
+         display: block;
+         transition: all 0.3s ease;
+         padding: 5px 0 5px 20px;
+         position: relative;
+      }
+      .service-sidebar ul li a:before {
+         content: "\f105";
+         font-family: FontAwesome;
+         position: absolute;
+         left: 0;
+         top: 5px;
+         color: #e32219;
+         font-weight: bold;
+      }
+      .service-sidebar ul li a:hover, .service-sidebar ul li.active a {
+         color: #e32219;
+         padding-left: 25px;
+      }
+      .service-sidebar ul li.active a:before {
+         color: #e32219;
+      }
+      .service-content-block {
+         background: #fff;
+         padding: 20px 0 20px 20px;
+      }
+      .service-title-main {
+         font-size: 32px;
+         font-weight: 700;
+         color: #1e2a3e;
+         margin-bottom: 25px;
+         position: relative;
+         padding-bottom: 15px;
+      }
+      .service-title-main:after {
+         content: '';
+         width: 60px;
+         height: 3px;
+         background: #e32219;
+         position: absolute;
+         bottom: 0;
+         left: 0;
+      }
+      .service-text p {
+         font-size: 16px;
+         line-height: 1.7;
+         color: #5a6e7c;
+         margin-bottom: 20px;
+      }
+      .info-highlight {
+         background: #fef5f4;
+         border-left: 4px solid #e32219;
+         padding: 20px 25px;
+         margin: 30px 0;
+         border-radius: 6px;
+      }
+      .info-highlight p {
+         margin-bottom: 0;
+         font-weight: 500;
+         color: #2c3e50;
+      }
+      .service-subheading {
+         font-size: 22px;
+         font-weight: 600;
+         margin: 30px 0 15px;
+         color: #1e2a3e;
+      }
+      .service-feature-list {
+         list-style: none;
+         padding-left: 0;
+         margin-top: 20px;
+      }
+      .service-feature-list li {
+         margin-bottom: 12px;
+         padding-left: 28px;
+         position: relative;
+         font-size: 15px;
+         color: #4a627a;
+      }
+      .service-feature-list li:before {
+         content: "\f00c";
+         font-family: FontAwesome;
+         position: absolute;
+         left: 0;
+         top: 0;
+         color: #e32219;
+         font-weight: bold;
+      }
+      .badge-network {
+         background: #eef2f9;
+         display: inline-block;
+         padding: 8px 18px;
+         border-radius: 30px;
+         font-weight: 600;
+         font-size: 14px;
+         color: #e32219;
+         margin-bottom: 15px;
+      }
+      .video-wrapper {
+         margin: 30px 0;
+         border-radius: 12px;
+         overflow: hidden;
+         box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      }
+      .video-wrapper iframe {
+         width: 100%;
+         height: 320px;
+         border: none;
+      }
+      .spare-part-grid {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 20px;
+         margin-top: 20px;
+      }
+      .stat-number {
+         font-size: 28px;
+         font-weight: 800;
+         color: #e32219;
+         display: block;
+      }
+      .two-column-layout {
+         display: flex;
+         gap: 30px;
+         flex-wrap: wrap;
+      }
+      .left-nav-col {
+         flex: 0 0 280px;
+      }
+      .right-content-col {
+         flex: 1;
+      }
+      @media (max-width: 991px) {
+         .two-column-layout {
+            flex-direction: column;
+         }
+         .left-nav-col {
+            flex: auto;
+            width: 100%;
+         }
+         .service-content-block {
+            padding-left: 0;
+         }
+      }
+      .btn-custom-video {
+         background: #e32219;
+         color: #fff;
+         display: inline-block;
+         padding: 12px 28px;
+         border-radius: 40px;
+         font-weight: 600;
+         transition: 0.3s;
+         text-decoration: none;
+      }
+      .btn-custom-video i {
+         margin-right: 8px;
+      }
+      .btn-custom-video:hover {
+         background: #b71c1c;
+         color: #fff;
+      }
+      
+      .logo-area img{
+         width:205px
+      }
+      
+      /* ===== IMPROVED FOOTER LOGO STYLES - MATCHING REFERENCE IMAGES ===== */
+      .footer-logo {
+          margin-bottom: 20px;
+      }
+      
+      .footer-logo img {
+          max-width: 210px;
+          height: auto;
+          transition: all 0.3s ease;
+            filter:drop-shadow(0 0 2px #fff)
+        drop-shadow(0 0 4px #fff)
+        drop-shadow(0 0 6px #fff);
+      }
+      
+      /* Alternative if logo has dark background - ensure white/light appearance */
+      .footer .footer-logo {
+          display: inline-block;
+      }
+      
+      /* For better visibility, add subtle text logo fallback */
+      .footer-logo-text {
+          display: none;
+      }
+      
+      /* Ensure footer logo stands out against dark background */
+      .footer-main {
+          background: #0a2540;
+      }
+      
+      /* Additional style to match the reference image design */
+      .footer-about p {
+          color: #cbd5e0;
+          line-height: 1.6;
+          margin-top: 15px;
+      }
+      
+      /* Quick Links styling to match reference */
+      .footer-widget .list-dash li a {
+          color: #cbd5e0;
+          transition: all 0.3s ease;
+      }
+      
+      .footer-widget .list-dash li a:hover {
+          color: #ffb347;
+          padding-left: 5px;
+      }
+      
+      /* Company Locations styling improvement */
+      .footer-widget .ts-contact-info {
+          margin-bottom: 20px;
+      }
+      
+      .footer-widget .ts-contact-content p {
+          color: #cbd5e0;
+      }
+      
+      .footer-widget .ts-contact-title {
+          color: #fff;
+          font-size: 16px;
+          font-weight: 600;
+          margin-bottom: 5px;
+      }
+      
+      /* Subscribe button styling */
+      .newsletter-form .btn-primary {
+          background: #ffb347;
+          border: none;
+          color: #1e2f3e;
+      }
+      
+      .newsletter-form .btn-primary:hover {
+          background: #ff9f1c;
+      }
+      
+      /* Widget title styling */
+      .footer-widget .widget-title {
+          color: #fff;
+          font-weight: 600;
+          margin-bottom: 25px;
+          position: relative;
+          padding-bottom: 12px;
+      }
+      
+      .footer-widget .widget-title:after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 50px;
+          height: 2px;
+          background: #ffb347;
+      }
+      
+      /* Ensure proper spacing in footer columns */
+      .footer-widget {
+          margin-bottom: 30px;
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+          .footer-logo img {
+              max-width: 180px;
+          }
+      }
+
+   </style>
+</head>
+
+<body>
+
+   <div class="body-inner">
+
+      <div class="site-top-2">
+         <header class="header nav-down" id="header-2">
+            <div class="container">
+               <div class="row">
+                  <div class="logo-area clearfix">
+                     <div class="logo col-lg-3 col-md-12">
+                        <a href="index.html">
+                           <img src="images/def2df14-14ee-4f1c-8ed5-0747fa291008_removalai_preview.png" alt="Mahindra Powerol">
+                        </a>
+                     </div>
+                     <!-- logo end-->
+                     <div class="col-lg-9 col-md-12 pull-right">
+                        <ul class="top-info unstyled">
+                           <li><span class="info-icon"><i class="icon icon-phone3"></i></span>
+                              <div class="info-wrapper">
+                                 <p class="info-title">24/7 Response Time</p>
+                                 <p class="info-subtitle">(+91) 98550-20522, 99884-48188</p>
+                              </div>
+                           </li>
+                           <li><span class="info-icon"><i class="icon icon-envelope"></i></span>
+                              <div class="info-wrapper">
+                                 <p class="info-title">Send Your Query</p>
+                                 <p class="info-subtitle">rajkumar37429@gmail.com</p>
+                              </div>
+                           </li>
+                           
+                        </ul>
+                     </div>
+                     <!-- Col End-->
+                  </div>
+                  <!-- Logo Area End-->
+               </div>
+            </div>
+            <!-- Container end-->
+            <div class="site-nav-inner site-navigation navigation navdown">
+               <div class="container">
+                  <nav class="navbar navbar-expand-lg ">
+                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="icon icon-menu"></i></span></button>
+                     <!-- End of Navbar toggler-->
+                     <div class="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
+                        <ul class="navbar-nav">
+                              <li class="nav-item">
+                              <a class="nav-link" href="index.html">Home</a>
+                           </li>
+                           <!-- li end-->
+                           <li class="nav-item">
+                              <a class="nav-link" href="about.html">About Us</a>
+                           </li>
+                           <!-- li end-->
+                           <li class="nav-item dropdown"><a class="nav-link" href="#" data-toggle="dropdown">Industrial Engine<i class="fa fa-angle-down"></i></a>
+                              <ul class="dropdown-menu" role="menu">
+                                 <li><a href="project-all.html">Projects All</a></li>
+                                 <li><a href="#">Generator</a></li>
+                                 <li><a href="#">Motors</a></li>
+                                 <li><a href="#">Inverters</a></li>
+                                 <li><a href="#">Electricals things</a></li>
+                                 <li><a href="#">Technical Specification</a></li>
+
+                              </ul>
+                           </li>
+                           <!-- li end-->
+                            <li class="nav-item dropdown"><a class="nav-link" href="#" data-toggle="dropdown">Services<i class="fa fa-angle-down"></i></a>
+                              <ul class="dropdown-menu" role="menu">
+                                 <li><a href="service.html">Services All</a></li>
+                                <li><a href="#" class="nav-service-link" data-service="preventive">Preventive Maintenance</a></li>
+                                 <li><a href="#" class="nav-service-link" data-service="valueAdded">Value Added Service</a></li>
+                                 <li><a href="#" class="nav-service-link" data-service="amcWarranty">AMC's & Warranty</a></li>
+                                 <li><a href="#" class="nav-service-link" data-service="installation">Installation</a></li>
+                                 <li><a href="#" class="nav-service-link" data-service="spareParts">Spare Parts</a></li>
+                              </ul>
+                           </li>
+                           <!-- li end-->
+                            <li class="nav-item">
+                              <a class="nav-link" href="gallery.html">Gallery</a>
+                           </li>
+                           <!-- li end-->
+                           
+                           
+                           <li class="nav-item dropdown">
+                              
+                                 <a href="contact.html">Contact</a>
+                           </li>
+                        </ul>
+                        <!--Nav ul end-->
+                     </div>
+                     <a href="contact.html" class="top-right-btn btn btn-primary">Request a Quote</a>
+                     <!-- Top bar btn -->
+                  </nav>
+                  <!-- Collapse end-->
+               </div>
+            </div>
+            <!-- Site nav inner end-->
+         </header>
+         <!-- Header end-->
+      </div>
+
+      <div class="banner-area" id="banner-area" style="background-image:url(images/banner/banner5.jpg);">
+         <div class="container">
+            <div class="row justify-content-center">
+               <div class="col">
+                  <div class="banner-heading">
+                     <h1 class="banner-title">Value Added Services</h1>
+                     <ol class="breadcrumb">
+                        <li>Home</li>
+                        <li><a href="#">Services</a></li>
+                        <li>Powerol Support</li>
+                     </ol>
+                  </div>
+               </div>
+               <!-- Col end-->
+            </div>
+            <!-- Row end-->
+         </div>
+         <!-- Container end-->
+      </div>
+      <!-- Banner area end-->
+      
+      <!-- Main service section with left navigation and right dynamic content based on images provided -->
+      <section class="main-container" id="main-container">
+         <div class="container">
+            <div class="two-column-layout">
+               <!-- LEFT SIDE NAVIGATION (exactly as per requirement: left side show elements) -->
+               <div class="left-nav-col">
+                  <div class="service-sidebar">
+                     <h4 style="font-weight:700; margin-bottom:20px; border-left: 4px solid #e32219; padding-left:15px;">Our Services</h4>
+                     <ul id="serviceNavList">
+                        <li class="active" data-target="valueAdded"><a href="javascript:void(0)">Value Added Service</a></li>
+                        <li data-target="amcWarranty"><a href="javascript:void(0)">AMC’s & WARRANTY</a></li>
+                        <li data-target="installation"><a href="javascript:void(0)">Installation</a></li>
+                        <li data-target="spareParts"><a href="javascript:void(0)">Spare Parts</a></li>
+                        <li data-target="preventive"><a href="javascript:void(0)">Preventive Maintenance</a></li>
+                     </ul>
+                  </div>
+                  <!-- extra info block optional: same style as side panels -->
+                  <div class="service-sidebar mt-4">
+                     <h5 style="font-weight:700;">24/7 Support Network</h5>
+                     <p><i class="fa fa-map-marker"></i> 23,Street no 2 ,<br>Gurudwara Gobindsar, <br>New Shimla Puri,ludhiana -141003</p>
+                     <p><i class="fa fa-clock-o"></i> Rapid response time</p>
+                     <a href="contact.html" class="btn-custom-video" style="background:#e32219; padding:8px 20px; font-size:14px; display:inline-block; margin-top:10px;"><i class="fa fa-headphones"></i> Get Support</a>
+                  </div>
+               </div>
+
+               <!-- RIGHT HAND DYNAMIC CONTENT (according to selected service, matching exact image descriptions) -->
+               <div class="right-content-col">
+                  <div class="service-content-block" id="dynamicServiceContent">
+                     <!-- Default content: Value Added Service as per first image content -->
+                     <div id="valueAddedContent" class="service-detail-pane">
+                        <span class="badge-network">Our Commitment</span>
+                        <h2 class="service-title-main">VALUE ADDED SERVICE</h2>
+
+                        <div class="service-text">
+
+                           <p>
+                              Established in <strong>1990</strong>, our company has been delivering complete power solutions 
+                              for over 30+ years under the leadership of <strong>Mr. Rajkumar (Raju)</strong>. 
+                              We specialize in generators, motors, inverters, and all types of electrical equipment.
+                           </p>
+
+                           <p>
+                              We do not just sell products — we provide complete end-to-end solutions including 
+                              <strong>installation, repair, maintenance, spare parts supply, and technical support</strong>. 
+                              Our aim is to ensure uninterrupted power so that your business runs smoothly without any downtime.
+                           </p>
+
+                           <p>
+                              Along with power solutions, we are actively involved in the 
+                              <strong>sale & purchase of industrial machinery and metal scrap</strong> such as 
+                              <strong>copper, brass, aluminium, iron, and other scrap materials</strong>. 
+                              We offer fair pricing and transparent dealing to our customers.
+                           </p>
+
+                           <div class="info-highlight">
+                              <p>
+                                 <strong>After-Sales Service Support:</strong>  
+                                 Our skilled and experienced technicians provide fast and reliable service support. 
+                                 We handle emergency breakdowns, routine servicing, and complete system checks 
+                                 to ensure long-lasting performance of your equipment.
+                              </p>
+                           </div>
+
+                           <p>
+                              We maintain a strong inventory of spare parts to ensure quick availability and minimal delay. 
+                              Both <strong>new and refurbished spare parts</strong> are available based on customer requirements.
+                           </p>
+
+                           <p>
+                              Our services are trusted by industries, workshops, and local businesses due to our 
+                              <strong>honest work, quality products, and long-term customer relationships</strong>.
+                           </p>
+
+                           <!-- NEW ADDED FEATURES SECTION -->
+                           <div class="spare-part-grid">
+                              <div><span class="stat-number">30+ Years</span><br>Experience</div>
+                              <div><span class="stat-number">24/7</span><br>Service Support</div>
+                              <div><span class="stat-number">100%</span><br>Customer Satisfaction</div>
+                              <div><span class="stat-number">All Types</span><br>Generators & Electricals</div>
+                           </div>
+
+                           <!-- EXTRA STRONG POINTS -->
+                           <p>
+                              ✔ Complete Generator Solutions (Sales & Service) <br>
+                              ✔ Industrial Machinery Scrap Dealer <br>
+                              ✔ Copper, Brass, Aluminium Scrap Specialist <br>
+                              ✔ Fast Response & Reliable Support <br>
+                              ✔ Affordable Pricing with Best Quality
+                           </p>
+
+                        </div>
+                     </div>
+
+                     <div id="amcWarrantyContent" class="service-detail-pane" style="display:none;">
+                        <span class="badge-network">Total Peace of Mind</span>
+                        <h2 class="service-title-main">AMC’s & WARRANTY</h2>
+                        <div class="service-text">
+                           <p>A package custom made as per customer’s requirements. Provide total peace of mind to the customer enabling him to have higher attention to his core business. The Package comes in Fully Loaded version (i.e., CAMC) which includes agreed number of Preventive maintenance services and includes almost all parts (including but not restricted to consumables, e.g., filters, oil, hoses, belts etc) as well as unlimited breakdown services.</p>
+                           <p>The version least loaded involves agreed number of Preventive maintenance services along with consumables, e.g., filters & oil.</p>
+                           <ul class="service-feature-list">
+                              <li>Comprehensive Annual Maintenance Contracts (CAMC)</li>
+                              <li>Unlimited breakdown support</li>
+                              <li>Genuine spare parts & consumables coverage</li>
+                              <li>Flexible plans to suit operational needs</li>
+                           </ul>
+                           <div class="info-highlight">
+                              <p><strong>Why Choose AMC?</strong> Maximize uptime, predictable costs, expert service visits, and priority support.</p>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div id="installationContent" class="service-detail-pane" style="display:none;">
+   <span class="badge-network">Professional Installation & Setup</span>
+   <h2 class="service-title-main">INSTALLATION & COMMISSIONING</h2>
+
+   <div class="service-text">
+
+      <p>
+         At <strong>B.R. Metal & Gen. Set</strong>, we provide complete installation and commissioning 
+         services for generators, motors, inverters, and electrical equipment. Since our establishment 
+         in <strong>1990</strong>, we have been delivering reliable and safe installation solutions 
+         under the guidance of <strong>Mr. Rajkumar (Raju)</strong>.
+      </p>
+
+      <p>
+         Our expert team ensures that every installation is done as per proper technical standards, 
+         helping to improve performance, safety, and long-term durability of the equipment. 
+         From site inspection to final setup, we handle everything so customers can stay worry-free.
+      </p>
+
+      <p>
+         We also provide installation support for industrial machinery and ensure proper alignment, 
+         wiring, load management, and testing before final handover.
+      </p>
+
+      <!-- IMAGE SECTION -->
+      <div class="installation-images text-center">
+         <img src="images/gallery/generator7.jpeg" class="img-fluid" alt="Generator Installation" style="margin-bottom:15px;">
+         <img src="images/gallery/generator16.jpeg" class="img-fluid" alt="DG Set Setup" style="margin-bottom:15px;">
+         <img src="images/gallery/generator11.jpeg" class="img-fluid" alt="Electrical Installation Work">
+          <img src="images/gallery/generator4.jpeg" class="img-fluid" alt="Electrical Installation Work">
+      </div>
+
+      <div class="info-highlight">
+         <p>
+            <strong>Important Guidelines:</strong><br>
+            ✔ Proper earthing must be done as per safety standards<br>
+            ✔ Installation area should be well-ventilated and pollution-free<br>
+            ✔ Load capacity and wiring should be checked before operation<br>
+            ✔ Regular inspection ensures long life and better performance
+         </p>
+      </div>
+
+      <p>
+         Our goal is to deliver <strong>safe, efficient, and long-lasting installation services</strong> 
+         with complete customer satisfaction. We also provide post-installation support and maintenance guidance.
+      </p>
+
+      <!-- EXTRA FEATURES -->
+      <div class="spare-part-grid">
+         <div><span class="stat-number">30+ Years</span><br>Experience</div>
+         <div><span class="stat-number">100%</span><br>Safe Installation</div>
+         <div><span class="stat-number">24/7</span><br>Support</div>
+         <div><span class="stat-number">All Types</span><br>Equipment Setup</div>
+      </div>
+
+   </div>
+</div>
+                     <div id="sparePartsContent" class="service-detail-pane" style="display:none;">
+                        <span class="badge-network">Trusted Spare Parts Supplier</span>
+                        <h2 class="service-title-main">GENERATOR & INDUSTRIAL SPARE PARTS</h2>
+
+                        <div class="service-text">
+                           
+                           <p>
+                              <strong>B.R. Metal & Gen. Set</strong> has been providing reliable and genuine spare parts since 
+                              <strong>1990</strong>. We deal in all types of <strong>generator spare parts, motors, inverters, 
+                              and electrical components</strong> for industrial and commercial use.
+                           </p>
+
+                           <p>
+                              Under the guidance of <strong>Mr. Rajkumar (Raju)</strong>, we ensure availability of 
+                              high-quality spare parts with proper testing and durability. Our network helps us maintain 
+                              stock and deliver parts quickly to our customers.
+                           </p>
+
+                           <p>
+                              We also specialize in <strong>sale & purchase of industrial machinery scrap</strong>, including 
+                              <strong>Copper, Brass, Aluminium, and other metal scrap</strong>. Our goal is to provide 
+                              genuine products at competitive prices with complete customer satisfaction.
+                           </p>
+
+                           <div class="spare-part-grid">
+                              <div><span class="stat-number">30+ Years</span><br>Industry Experience</div>
+                              <div><span class="stat-number">100%</span><br>Genuine Parts</div>
+                              <div><span class="stat-number">All Types</span><br>Generator & Electricals</div>
+                           </div>
+
+                        </div>
+                     </div>
+
+                 <div id="preventiveContent" class="service-detail-pane" style="display:none;">
+                  <span class="badge-network">Proactive Maintenance Service</span>
+                  <h2 class="service-title-main">PREVENTIVE MAINTENANCE</h2>
+
+                  <div class="service-text">
+                     <p>
+                        Preventive maintenance helps in avoiding sudden failures, reducing repair costs, and increasing 
+                        the life of your equipment. Our experienced technicians perform detailed inspections and servicing 
+                        of generators, motors, and electrical systems to keep them in top condition.
+                     </p>
+
+                     <!-- IMAGE SECTION -->
+                     <div class="installation-images text-center">
+                        <img src="images/gallery/generator8.jpeg" class="img-fluid" alt="Generator Maintenance" style="margin-bottom:15px;">
+                        <img src="images/gallery/generator16.jpeg" class="img-fluid" alt="Generator Service Work" style="margin-bottom:15px;">
+                     </div>
+
+                     <p>
+                        We follow a complete maintenance checklist including engine inspection, oil and filter change, 
+                        cooling system check, fuel system cleaning, and electrical testing to ensure maximum efficiency 
+                        and performance.
+                     </p>
+
+                     <ul class="service-feature-list">
+                        <li>Regular servicing based on usage and running hours</li>
+                        <li>Complete inspection and health check report</li>
+                        <li>Use of genuine spare parts, oil, and filters</li>
+                        <li>Quick response for emergency breakdown service</li>
+                        <li>Maintenance support for generators, motors, and inverters</li>
+                     </ul>
+
+                     <div class="info-highlight">
+                        <p>
+                           <strong>Why Preventive Maintenance is Important:</strong><br>
+                           ✔ Avoid unexpected power failure<br>
+                           ✔ Increase equipment life<br>
+                           ✔ Reduce repair and fuel costs<br>
+                           ✔ Ensure safety and smooth performance
+                        </p>
+                     </div>
+
+                     <p>
+                        Our goal is to provide <strong>reliable, cost-effective, and long-term maintenance solutions</strong> 
+                        so your business never stops due to power issues.
+                     </p>
+
+                     <!-- STATS SECTION -->
+                     <div class="spare-part-grid">
+                        <div><span class="stat-number">30+ Years</span><br>Experience</div>
+                        <div><span class="stat-number">24/7</span><br>Service Support</div>
+                        <div><span class="stat-number">100%</span><br>Customer Satisfaction</div>
+                        <div><span class="stat-number">All Types</span><br>Equipment Covered</div>
+                     </div>
+
+                  </div>
+               </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+   <!-- Footer start (preserved exactly as original) -->
+      <footer class="footer" id="footer">
+         <div class="footer-main bg-overlay">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-4 col-md-12 footer-widget footer-about">
+                     <div class="footer-logo">
+                        <img src="images/logo12.png" alt="">
+                     </div>
+                       <p>B.R. Metal & Gen Set is a trusted name in generator solutions, industrial engines, and electrical equipment since 1990. We provide reliable power backup, installation, maintenance, and genuine spare parts with 24/7 support.</p>
+                     
+                  </div>
+                  <!-- About us end-->
+                  <div class="col-lg-4 col-md-12 footer-widget">
+                     <h3 class="widget-title">Quick Links</h3>
+                     <ul class="list-dash">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="service.html">Our Services</a></li>
+                        <li><a href="project-all.html">Projects</a></li>
+                        <li><a href="contact.html">Consultation</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-lg-4 col-md-12W footer-widget">
+                     <h3 class="widget-title">Company Locations</h3>
+                     <div class="ts-contact-info"><span class="ts-contact-icon float-left"><i class="icon icon-map-marker2"></i></span>
+                        <div class="ts-contact-content">
+                           <h3 class="ts-contact-title">Address</h3>
+                           <p>23,Street no 2 ,Gurudwara Gobindsar, <br>New Shimla Puri,ludhiana -141003</p>
+                        </div>
+                        <!-- Contact content end-->
+                     </div>
+                     
+                     <div class="ts-contact-info last"><span class="ts-contact-icon float-left"><i class="icon icon-envelope"></i></span>
+                        <div class="ts-contact-content">
+                           <h3 class="ts-contact-title">Email Address</h3>
+                           <p>rajkumar37429@gmail.com</p>
+                        </div>
+                        <!-- Contact content end-->
+                     </div>
+                     
+                     <div class="ts-contact-info"><span class="ts-contact-icon float-left"><i class="icon icon-phone3"></i></span>
+                        <div class="ts-contact-content">
+                           <h3 class="ts-contact-title">Phone Number</h3>
+                           <p>98550-20522, 99884-48188 , 81969-55100</p>
+                        </div>
+                        <!-- Contact content end-->
+                     </div>
+                     
+                  </div>
+               </div>
+               <!-- Content row end-->
+            </div>
+            <!-- Container end-->
+         </div>
+         <!-- Footer Main-->
+         <div class="copyright">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-6 col-md-12">
+                     <div class="copyright-info"><span>Copyright © 2026 a theme by <a href="https://astirmind.com">Astirmind Software Solutions</a></span></div>
+                  </div>
+               </div>
+               <!-- Row end-->
+            </div>
+            <!-- Container end-->
+         </div>
+         <!-- Copyright end-->
+      </footer>
+      <!-- Footer end-->
+
+      <div class="back-to-top affix" id="back-to-top" data-spy="affix" data-offset-top="10">
+         <button class="btn btn-primary" title="Back to Top"><i class="fa fa-angle-double-up"></i>
+            <!-- icon end-->
+         </button>
+         <!-- button end-->
+      </div>
+      <!-- End Back to Top-->
+
+      <!-- Javascript Files -->
+      <script type="text/javascript" src="js/jquery.js"></script>  
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+      <script type="text/javascript" src="js/jquery.counterup.min.js"></script>
+      <script type="text/javascript" src="js/waypoints.min.js"></script>
+      <script type="text/javascript" src="js/jquery.colorbox.js"></script>   
+      <script type="text/javascript" src="js/custom.js"></script>
+      
+      <script>
+         // Left navigation dynamic content swapping without altering header/footer
+         $(document).ready(function(){
+            function showServicePane(targetId) {
+               $('.service-detail-pane').hide();
+               $('#' + targetId + 'Content').fadeIn(300);
+               // update active class on left menu
+               $('#serviceNavList li').removeClass('active');
+               $('#serviceNavList li[data-target="' + targetId + '"]').addClass('active');
+            }
+            
+            $('#serviceNavList li').on('click', function(e){
+               e.preventDefault();
+               var target = $(this).data('target');
+               if(target) {
+                  showServicePane(target);
+               }
+            });
+            
+            // initial active state: valueAdded visible
+            showServicePane('valueAdded');
+         });
+      </script>
+
+      <script>
+   $(document).ready(function(){
+      
+      // Function to show specific service pane
+      function showServicePane(targetId) {
+         $('.service-detail-pane').hide();
+         $('#' + targetId + 'Content').fadeIn(300);
+         // update active class on left menu
+         $('#serviceNavList li').removeClass('active');
+         $('#serviceNavList li[data-target="' + targetId + '"]').addClass('active');
+      }
+      
+      // Handle left sidebar navigation clicks
+      $('#serviceNavList li').on('click', function(e){
+         e.preventDefault();
+         var target = $(this).data('target');
+         if(target) {
+            showServicePane(target);
+         }
+      });
+      
+      // Handle navbar dropdown service links (for when already on service page)
+      $('.nav-item.dropdown .dropdown-menu a').each(function() {
+         var linkText = $(this).text().trim();
+         
+         if(linkText === "Preventive Maintenance") {
+            $(this).attr('href', 'javascript:void(0)');
+            $(this).on('click', function(e) {
+               e.preventDefault();
+               showServicePane('preventive');
+               $('html, body').animate({
+                  scrollTop: $("#main-container").offset().top - 100
+               }, 500);
+            });
+         }
+         else if(linkText === "Value Added Service") {
+            $(this).attr('href', 'javascript:void(0)');
+            $(this).on('click', function(e) {
+               e.preventDefault();
+               showServicePane('valueAdded');
+               $('html, body').animate({
+                  scrollTop: $("#main-container").offset().top - 100
+               }, 500);
+            });
+         }
+         else if(linkText === "AMC's & Warranty") {
+            $(this).attr('href', 'javascript:void(0)');
+            $(this).on('click', function(e) {
+               e.preventDefault();
+               showServicePane('amcWarranty');
+               $('html, body').animate({
+                  scrollTop: $("#main-container").offset().top - 100
+               }, 500);
+            });
+         }
+         else if(linkText === "Installation") {
+            $(this).attr('href', 'javascript:void(0)');
+            $(this).on('click', function(e) {
+               e.preventDefault();
+               showServicePane('installation');
+               $('html, body').animate({
+                  scrollTop: $("#main-container").offset().top - 100
+               }, 500);
+            });
+         }
+         else if(linkText === "Spare Parts") {
+            $(this).attr('href', 'javascript:void(0)');
+            $(this).on('click', function(e) {
+               e.preventDefault();
+               showServicePane('spareParts');
+               $('html, body').animate({
+                  scrollTop: $("#main-container").offset().top - 100
+               }, 500);
+            });
+         }
+         else if(linkText === "Services All") {
+            $(this).attr('href', 'javascript:void(0)');
+            $(this).on('click', function(e) {
+               e.preventDefault();
+               showServicePane('valueAdded');
+               $('html, body').animate({
+                  scrollTop: $("#main-container").offset().top - 100
+               }, 500);
+            });
+         }
+      });
+      
+      // Check if coming from another page with a specific service to open
+      var serviceToOpen = sessionStorage.getItem('openService');
+      if(serviceToOpen) {
+         // Clear it after use so it doesn't persist on refresh
+         sessionStorage.removeItem('openService');
+         // Open the specific service panel
+         showServicePane(serviceToOpen);
+         // Smooth scroll to service section
+         setTimeout(function() {
+            $('html, body').animate({
+               scrollTop: $("#main-container").offset().top - 100
+            }, 500);
+         }, 100);
+      } else {
+         // Default: show Value Added Service
+         showServicePane('valueAdded');
+      }
+      
+   });
+</script>
+   </div>
+   <!--Body Inner end-->
+</body>
+
+</html>
