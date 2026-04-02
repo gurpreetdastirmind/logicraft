@@ -356,7 +356,7 @@
                                  <!-- Col 12 end-->
                               </div>
                               <!-- Form row end-->
-                                 <button class="btn btn-primary tw-mt-30" type="submit"><i class="fa fa-paper-plane-o"></i> Send Massage</button>
+                                 <button class="btn btn-primary tw-mt-30" type="button" id="sendBtn"><i class="fa fa-paper-plane-o"></i> Send Massage</button>
                            </form>
                            <!-- Form end-->
                         </div>
@@ -527,7 +527,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script>
-document.getElementById("contact-form").addEventListener("submit", async function(e) {
+document.getElementById("sendBtn").addEventListener("click", async function(e) {
     e.preventDefault();
 
     const data = {
