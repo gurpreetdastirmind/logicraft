@@ -329,7 +329,7 @@
                      <div class="col-lg-6">
                          <h3 class="column-title">Contact Now</h3>
                         <div class="contact-submit-box contact-box form-box">
-                           <form class="contact-form" id="contact-form" onsubmit="return false;">
+                           <form class="contact-form" id="contact-form">
                               <div class="error-container"></div>
                               <div class="row">
                                  <div class="col-lg-12">
@@ -356,7 +356,7 @@
                                  <!-- Col 12 end-->
                               </div>
                               <!-- Form row end-->
-                                 <button class="btn btn-primary tw-mt-30" type="button" id="sendBtn"><i class="fa fa-paper-plane-o"></i> Send Massage</button>
+                                 <button class="btn btn-primary tw-mt-30" type="submit" id="sendBtn"><i class="fa fa-paper-plane-o"></i> Send Massage</button>
                            </form>
                            <!-- Form end-->
                         </div>
@@ -527,8 +527,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script>
-document.getElementById("sendBtn").addEventListener("click", async function(e) {
-    e.preventDefault();
+document.getElementById("contact-form").addEventListener("submit", async function(e) {
+    e.preventDefault(); // 🚨 STOP default form POST
 
     const data = {
         name: document.getElementById("name").value,
@@ -538,7 +538,7 @@ document.getElementById("sendBtn").addEventListener("click", async function(e) {
     };
 
     try {
-        const response = await fetch("https://logicraft.onrender.com/send-email", {
+        const response = await fetch("https://logicraft.onrender.com/send-email", {   // ✅ use relative path
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -559,8 +559,7 @@ document.getElementById("sendBtn").addEventListener("click", async function(e) {
         console.error(error);
         alert("⚠️ Server Error");
     }
-});
-</script>
+});</script>
 
 </body>
 
