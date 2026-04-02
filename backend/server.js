@@ -11,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // ✅ Serve frontend (theme folder)
-app.use(express.static(path.join(__dirname, "theme")));
+app.use(express.static(path.join(__dirname, "../theme")));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "theme", "index.html"));
