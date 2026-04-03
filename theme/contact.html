@@ -584,7 +584,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         try {
             // Use absolute URL for better reliability
-            const apiUrl = window.location.origin + "/send-email";
+            const apiUrl =  "https://logicraft.onrender.com/send-email";
             console.log("Sending to:", apiUrl);
             
             const response = await fetch(apiUrl, {
