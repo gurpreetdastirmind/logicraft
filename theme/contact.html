@@ -538,7 +538,7 @@ document.getElementById("contact-form").addEventListener("submit", async functio
     };
 
     try {
-        const response = await fetch("/send-email", {   // ✅ use relative path
+        const response = await fetch("https://logicraft.onrender.com/send-email", {   // ✅ use relative path
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
