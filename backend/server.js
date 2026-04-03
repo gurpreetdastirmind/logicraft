@@ -4,6 +4,15 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
 
+// Only try to load dotenv if in development
+if (process.env.NODE_ENV !== 'production') {
+  try {
+    require('dotenv').config();
+  } catch (err) {
+    console.log("dotenv not available in production");
+  }
+}
+
 const app = express();
 
 // Middleware
@@ -11,7 +20,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// ✅ Serve files from the theme folder (one level up from backend)
+// ✅ Serve files from the theme folder
 const themePath = path.join(__dirname, "../theme");
 app.use(express.static(themePath));
 
@@ -43,8 +52,10 @@ app.get("/gallery.html", (req, res) => {
 
 // Create transporter
 const createTransporter = () => {
+  // Check for environment variables (from Render dashboard)
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
     console.error("❌ EMAIL_USER or EMAIL_PASS not set!");
+    console.log("Available env vars:", Object.keys(process.env));
     return null;
   }
   
@@ -74,10 +85,10 @@ app.post("/send-email", async (req, res) => {
   }
   
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.error("❌ Email not configured");
+    console.error("❌ Email not configured on server");
     return res.status(500).json({ 
       success: false, 
-      error: "Email service not configured" 
+      error: "Email service not configured. Please contact administrator." 
     });
   }
   
@@ -137,8 +148,10 @@ app.get("/health", (req, res) => {
   res.json({ 
     status: "OK", 
     emailConfigured: !!(process.env.EMAIL_USER && process.env.EMAIL_PASS),
+    emailUser: process.env.EMAIL_USER ? "Configured" : "Not configured",
     themePath: themePath,
-    uptime: process.uptime()
+    uptime: process.uptime(),
+    nodeEnv: process.env.NODE_ENV || "development"
   });
 });
 
@@ -156,4 +169,5 @@ app.listen(PORT, '0.0.0.0', () => {
   if (process.env.EMAIL_USER) {
     console.log(`📧 Using email: ${process.env.EMAIL_USER}`);
   }
+  console.log(`🌍 Environment: ${process.env.NODE_ENV || "development"}`);
 });
