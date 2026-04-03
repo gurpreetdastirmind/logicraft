@@ -103,7 +103,7 @@ app.post("/send-email", async (req, res) => {
   
   const mailOptions = {
     from: `"${name}" <${process.env.EMAIL_USER}>`,
-    to: "gurpreetsinghpctebtech20@gmail.com",
+    to: "rajkumar37429@gmail.com",
     replyTo: email,
     subject: "New Contact Form Message - Logicraft",
     html: `
