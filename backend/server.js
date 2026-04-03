@@ -38,7 +38,7 @@ app.post("/send-email", async (req, res) => {
 
   const mailOptions = {
     from: `"${name}" <${process.env.EMAIL_USER}>`,
-    to: "rajkumar37429@gmail.com",
+    to: "gurpreetsinghpctebtech20@gmail.com",
     replyTo: email, // ✅ FIXED
     subject: "New Contact Form Message",
     html: `
