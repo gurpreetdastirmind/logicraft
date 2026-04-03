@@ -862,7 +862,7 @@
                </div>
                <!-- Col end-->
                <div class="col-lg-7 qutoe-form-inner-le">
-                     <form class="contact-form" id="contact-form" method="POST">
+                     <form class="contact-form" id="contact-form">
                         <h2 class="column-title "><span>We are always ready</span> Request a call back</h2>
                         <div class="error-container"></div>
                         <div class="row">
@@ -891,7 +891,7 @@
                         </div>
                         <!-- Form row end-->
                         <div class="text-right">
-                           <button class="btn btn-primary tw-mt-30" type="submit">Contact US</button>
+                           <button class="btn btn-primary tw-mt-30" type="submit" id="sendBtn">Contact US</button>
                         </div>
                      </form>
                      <!-- Form end-->
@@ -1130,37 +1130,143 @@
 </script>
 
 <script>
-document.getElementById("contact-form").addEventListener("submit", async function(e) {
-    e.preventDefault();
-
-    const data = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        number: document.getElementById("number").value,
-        message: document.getElementById("message").value
-    };
-
-    try {
-        const response = await fetch("http://localhost:5000/send-email", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-
-        if(result.success){
-            alert("✅ Message Sent Successfully!");
-            document.getElementById("contact-form").reset();
-        } else {
-            alert("❌ Failed to send message");
+// Improved contact form with better error handling
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById("contact-form");
+    if (!form) return;
+    
+    form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        
+        // Get form elements
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const numberInput = document.getElementById("number");
+        const messageInput = document.getElementById("message");
+        const submitBtn = document.querySelector('#sendBtn');
+        
+        // Clear previous error messages
+        const existingError = document.querySelector('.form-error-message');
+        if (existingError) existingError.remove();
+        
+        // Validate fields
+        if (!nameInput.value.trim()) {
+            showError("Please enter your name", nameInput);
+            return;
         }
-
-    } catch (error) {
-        console.error(error);
-        alert("⚠️ Server Error");
+        
+        if (!emailInput.value.trim()) {
+            showError("Please enter your email", emailInput);
+            return;
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailInput.value.trim())) {
+            showError("Please enter a valid email address", emailInput);
+            return;
+        }
+        
+        if (!messageInput.value.trim()) {
+            showError("Please enter your message", messageInput);
+            return;
+        }
+        
+        // Show loading state
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
+        
+        const data = {
+            name: nameInput.value.trim(),
+            email: emailInput.value.trim(),
+            number: numberInput.value.trim(),
+            message: messageInput.value.trim()
+        };
+        
+        console.log("Sending data:", { ...data, email: data.email });
+        
+        try {
+            // Use absolute URL for better reliability
+            const apiUrl =  "https://logicraft.onrender.com/send-email";
+            console.log("Sending to:", apiUrl);
+            
+            const response = await fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+            
+            const result = await response.json();
+            console.log("Response:", result);
+            
+            if (result.success) {
+                showSuccess("✅ " + result.message);
+                form.reset();
+            } else {
+                showError("❌ " + (result.error || "Failed to send message. Please try again."));
+            }
+        } catch (error) {
+            console.error("Network Error:", error);
+            showError("⚠️ Network error. Please check your connection and try again. If the problem persists, please contact us directly by phone.");
+        } finally {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+    
+    function showError(message, inputField = null) {
+        // Remove any existing error messages
+        const existingError = document.querySelector('.form-error-message');
+        if (existingError) existingError.remove();
+        
+        // Create error div
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'alert alert-danger form-error-message';
+        errorDiv.style.cssText = 'margin: 10px 0; padding: 10px; border-radius: 4px;';
+        errorDiv.innerHTML = message;
+        
+        // Insert at top of form
+        const form = document.getElementById("contact-form");
+        form.insertBefore(errorDiv, form.firstChild);
+        
+        // Highlight input field if provided
+        if (inputField) {
+            inputField.style.borderColor = '#dc3545';
+            inputField.style.backgroundColor = '#fff8f8';
+            inputField.focus();
+            
+            // Remove highlight after 3 seconds
+            setTimeout(() => {
+                inputField.style.borderColor = '';
+                inputField.style.backgroundColor = '';
+            }, 3000);
+        }
+        
+        // Auto-hide after 5 seconds
+        setTimeout(() => {
+            if (errorDiv.parentNode) errorDiv.remove();
+        }, 5000);
+    }
+    
+    function showSuccess(message) {
+        const successDiv = document.createElement('div');
+        successDiv.className = 'alert alert-success form-success-message';
+        successDiv.style.cssText = 'margin: 10px 0; padding: 10px; border-radius: 4px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;';
+        successDiv.innerHTML = message;
+        
+        const form = document.getElementById("contact-form");
+        form.insertBefore(successDiv, form.firstChild);
+        
+        // Auto-hide after 5 seconds
+        setTimeout(() => {
+            if (successDiv.parentNode) successDiv.remove();
+        }, 5000);
+        
+        // Scroll to top to show success message
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 });
 </script>
