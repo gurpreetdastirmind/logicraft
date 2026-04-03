@@ -11,16 +11,34 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// ✅ FIXED: Serve files from CURRENT directory (NOT ../theme)
-app.use(express.static(__dirname));
+// ✅ Serve files from the theme folder (one level up from backend)
+const themePath = path.join(__dirname, "../theme");
+app.use(express.static(themePath));
 
-// Serve the contact page
+// Serve the contact page from theme folder
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "contact.html"));
+  res.sendFile(path.join(themePath, "contact.html"));
 });
 
 app.get("/contact.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "contact.html"));
+  res.sendFile(path.join(themePath, "contact.html"));
+});
+
+// Also serve any other HTML pages
+app.get("/index.html", (req, res) => {
+  res.sendFile(path.join(themePath, "index.html"));
+});
+
+app.get("/about.html", (req, res) => {
+  res.sendFile(path.join(themePath, "about.html"));
+});
+
+app.get("/service.html", (req, res) => {
+  res.sendFile(path.join(themePath, "service.html"));
+});
+
+app.get("/gallery.html", (req, res) => {
+  res.sendFile(path.join(themePath, "gallery.html"));
 });
 
 // Create transporter
@@ -76,7 +94,7 @@ app.post("/send-email", async (req, res) => {
     from: `"${name}" <${process.env.EMAIL_USER}>`,
     to: "gurpreetsinghpctebtech20@gmail.com",
     replyTo: email,
-    subject: "New Contact Form Message",
+    subject: "New Contact Form Message - Logicraft",
     html: `
       <h2>New Contact Message</h2>
       <p><strong>Name:</strong> ${name}</p>
@@ -84,6 +102,8 @@ app.post("/send-email", async (req, res) => {
       <p><strong>Phone:</strong> ${number || "Not provided"}</p>
       <p><strong>Message:</strong></p>
       <p>${message.replace(/\n/g, '<br>')}</p>
+      <hr>
+      <p><small>Sent from Logicraft Website</small></p>
     `
   };
   
@@ -94,12 +114,20 @@ app.post("/send-email", async (req, res) => {
     const info = await transporter.sendMail(mailOptions);
     console.log("✅ Email sent:", info.messageId);
     
-    res.json({ success: true });
+    res.json({ success: true, message: "Email sent successfully" });
   } catch (error) {
     console.error("❌ Error:", error.message);
+    
+    let errorMessage = error.message;
+    if (error.code === 'EAUTH') {
+      errorMessage = "Email authentication failed. Check your app password.";
+    } else if (error.code === 'ECONNECTION') {
+      errorMessage = "Cannot connect to email server.";
+    }
+    
     res.status(500).json({ 
       success: false, 
-      error: error.message 
+      error: errorMessage 
     });
   }
 });
@@ -109,13 +137,23 @@ app.get("/health", (req, res) => {
   res.json({ 
     status: "OK", 
     emailConfigured: !!(process.env.EMAIL_USER && process.env.EMAIL_PASS),
+    themePath: themePath,
     uptime: process.uptime()
   });
+});
+
+// Handle 404 for any other routes
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(themePath, "404.html"));
 });
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`✅ Server running on port ${PORT}`);
+  console.log(`📁 Serving files from: ${themePath}`);
   console.log(`📧 Email configured: ${!!(process.env.EMAIL_USER && process.env.EMAIL_PASS)}`);
+  if (process.env.EMAIL_USER) {
+    console.log(`📧 Using email: ${process.env.EMAIL_USER}`);
+  }
 });
