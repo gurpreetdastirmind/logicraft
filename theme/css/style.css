@@ -1470,7 +1470,7 @@ ul.top-menu li a:hover {
 }
 
 .header {
-  background: #fff;
+  background: rgb(15 128 81);
   z-index: 2;
 }
 
@@ -1561,7 +1561,7 @@ ul.top-menu li a:hover {
   line-height: normal;
   font-size: 14px;
   font-weight: 400;
-  color: #7a7a7a;
+  color: white;
   margin-top: 5px;
   margin-bottom: 0;
 }
@@ -1573,7 +1573,7 @@ ul.top-menu li a:hover {
   margin-bottom: 0;
   line-height: normal;
   font-weight: 700;
-  color: #252a37;
+  /* color: #252a37; */
 }
 
 /* Main navigation */
