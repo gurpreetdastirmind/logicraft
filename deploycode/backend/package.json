@@ -1,0 +1,21 @@
+{
+  "name": "logicraft",
+  "version": "1.0.0",
+  "description": "Bootstrap Business Template",
+  "author": "furioustheme",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "browser-sync": "^2.27.10",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "gulp": "^4.0.2",
+    "nodemailer": "^8.0.4"
+  },
+  "main": "gulpfile.js",
+  "keywords": [],
+  "type": "commonjs"
+}
