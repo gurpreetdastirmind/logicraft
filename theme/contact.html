@@ -427,12 +427,121 @@
               margin-bottom: 30px;
           }
       }
+
+      /* ===================================================== */
+      /* NEW: MOBILE/TABLET BLACK TOP BAR WITH CONTACT NUMBER  */
+      /* ===================================================== */
+      
+      /* Mobile top bar - black background, shows only on screens <= 991px */
+      .mobile-contact-bar {
+          display: none; /* hidden by default on desktop */
+          background-color: #000000; /* pure black background */
+          color: #ffffff;
+          padding: 10px 15px;
+          text-align: center;
+          font-size: 14px;
+          font-weight: 500;
+          border-bottom: 1px solid #333;
+          font-family: 'Fira Sans', sans-serif;
+          letter-spacing: 0.3px;
+          z-index: 1000;
+          width: 100%;
+      }
+      
+      .mobile-contact-bar .contact-number {
+          color: #ffb347; /* warm orange for visibility */
+          font-weight: 700;
+          margin: 0 5px;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 4px 12px;
+          border-radius: 40px;
+          transition: all 0.2s ease;
+      }
+      
+      .mobile-contact-bar .contact-number i {
+          font-size: 14px;
+          color: #ffb347;
+      }
+      
+      .mobile-contact-bar .contact-number:hover {
+          background: rgba(255,180,71,0.2);
+          text-decoration: none;
+          color: #ffc966;
+      }
+      
+      .mobile-contact-bar .separator {
+          margin: 0 8px;
+          color: #777;
+          font-weight: normal;
+      }
+      
+      /* Important: only visible on mobile & tablet (max-width: 991px) */
+      @media (max-width: 991px) {
+          .mobile-contact-bar {
+              display: block !important;
+              position: relative;
+              top: 0;
+              left: 0;
+          }
+          
+          /* Ensure there's no gap or margin shift */
+          .site-top-2 {
+              margin-top: 0;
+          }
+          
+          /* slight adjustment for header stacking */
+          .header {
+              margin-top: 0;
+          }
+      }
+      
+      /* On larger screens (desktop/laptop) we keep the bar hidden - no change to existing layout */
+      @media (min-width: 992px) {
+          .mobile-contact-bar {
+              display: none !important;
+          }
+      }
+      
+      /* Ensure the main navigation does not overlap and spacing is consistent */
+      .site-nav-inner {
+          transition: none;
+      }
+      
+      /* Touch-friendly tap highlight */
+      .mobile-contact-bar .contact-number:active {
+          opacity: 0.8;
+      }
+      
+      /* optional: for very small screens adjust font size */
+      @media (max-width: 480px) {
+          .mobile-contact-bar {
+              font-size: 12px;
+              padding: 8px 10px;
+          }
+          .mobile-contact-bar .contact-number {
+              padding: 3px 8px;
+              font-size: 12px;
+          }
+      }
    </style>
 </head>
 
 <body>
 
 <div class="body-inner">
+
+   <!-- ===================================================== -->
+   <!-- NEW: MOBILE/TABLET BLACK TOP BAR WITH PHONE NUMBERS    -->
+   <!-- Shows only on screens <= 991px, hidden on desktop      -->
+   <!-- ===================================================== -->
+   <div class="mobile-contact-bar">
+       <a href="tel:+919855020522" class="contact-number"><i class="fa fa-phone"></i> 98550-20522 ,99884-48188</a>
+ 
+   </div>
+   <!-- ===================================================== -->
 
    <div class="site-top-2">
       <header class="header nav-down" id="header-2">
@@ -472,7 +581,7 @@
                   <!-- Logo inside navbar for mobile/tablet -->
                   <div class="navbar-brand-mobile d-lg-none">
                      <a href="index.html" class="mobile-logo-link">
-                        <img src="images/logo12.png" alt="Logo" class="mobile-logo-img" style="max-height: 90px; width: auto;">
+                        <img src="images/logo12.png" alt="Logo" class="mobile-logo-img" style="max-height: 90px; width: 175px;">
                      </a>
                   </div>
                   

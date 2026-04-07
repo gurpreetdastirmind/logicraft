@@ -381,6 +381,7 @@
 
    .mobile-logo-img {
       max-height: 85px;
+      width: 175px;
    }
 }
 
@@ -390,8 +391,44 @@
       display: none !important;
    }
 }
+/* MOBILE CONTACT BAR */
+.mobile-contact-bar {
+    display: none;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 15px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 1px solid #333;
+    z-index: 1000;
+    width: 100%;
+}
 
-@
+.mobile-contact-bar .contact-number {
+    color: #ffb347;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.mobile-contact-bar .contact-number i {
+    margin-right: 5px;
+}
+
+/* SHOW ONLY ON MOBILE & TABLET */
+@media (max-width: 991px) {
+    .mobile-contact-bar {
+        display: block !important;
+    }
+}
+
+/* HIDE ON DESKTOP */
+@media (min-width: 992px) {
+    .mobile-contact-bar {
+        display: none !important;
+    }
+}
+
 
    </style>
 </head>
@@ -399,6 +436,12 @@
 <body>
 
    <div class="body-inner">
+      <!-- MOBILE CONTACT BAR (ONLY MOBILE/TABLET) -->
+<div class="mobile-contact-bar">
+   <a href="tel:+919855020522" class="contact-number">
+      <i class="fa fa-phone"></i> 98550-20522 ,99884-48188
+   </a>
+</div>
 
       <div class="site-top-2">
    <header class="header nav-down" id="header-2">
