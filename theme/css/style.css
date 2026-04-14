@@ -1359,6 +1359,7 @@ ul.top-menu li a:hover {
 }
 .site-navigation.navdown ul.navbar-nav > li > a {
   line-height: 60px;
+  font-size: 19px
 }
 .site-navigation.navigation.navdown {
   background: #1E2227;
@@ -1501,10 +1502,10 @@ ul.top-menu li a:hover {
 
 .logo-area {
   display: -webkit-box;
-  display: -webkit-flex;
+  /* display: -webkit-flex; */
   display: -moz-box;
   display: -ms-flexbox;
-  display: flex;
+  /* display: flex; */
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 100%;
   -moz-box-flex: 0;
@@ -1559,8 +1560,8 @@ ul.top-menu li a:hover {
 
 .top-info li .info-wrapper p {
   line-height: normal;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 700;
   color: white;
   margin-top: 5px;
   margin-bottom: 0;
@@ -1569,7 +1570,7 @@ ul.top-menu li a:hover {
   background: none;
 }
 .top-info li .info-wrapper p.info-subtitle {
-  font-size: 16px;
+  font-size: 17px;
   margin-bottom: 0;
   line-height: normal;
   font-weight: 700;

@@ -88,10 +88,13 @@
       }
       
       /* Logo styling - same as index */
-      .logo-area img {
-         width: 115%;
-         filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff) drop-shadow(0 0 6px #fff);
-      }
+           .logo-area img {
+    width: 193px;
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff) drop-shadow(0 0 6px #fff);
+    height: 154px;
+    margin-left: -46px;
+    margin-top: 25px;
+}
       
       /* ===== IMPROVED FOOTER LOGO STYLES ===== */
       .footer-logo {
@@ -163,7 +166,6 @@
       @media (min-width: 992px) {
           .top-info {
               display: flex !important;
-              padding-top:25px
           }
       }
       
@@ -216,9 +218,22 @@
           .site-nav-inner .navbar .navbar-brand-mobile {
               display: flex;
               align-items: center;
+              gap: 10px;
           }
           .navbar .mobile-logo {
               display: block;
+          }
+          /* NEW: Styling for mobile brand text - matching index.html */
+          .mobile-brand-text {
+              display: inline-block;
+              font-size: 25px;
+              font-weight: 700;
+              color: #ffb347;
+              letter-spacing: 1px;
+              text-transform: uppercase;
+              white-space: normal;
+              line-height: 1.2;
+              text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
           }
       }
       @media (min-width: 992px) {
@@ -228,6 +243,10 @@
           .site-nav-inner .navbar {
               display: flex;
               align-items: center;
+          }
+          /* Hide mobile brand text on desktop */
+          .mobile-brand-text {
+              display: none !important;
           }
       }
       .site-nav-inner {
@@ -525,7 +544,87 @@
               padding: 3px 8px;
               font-size: 12px;
           }
+          .mobile-brand-text {
+              font-size: 12px;
+              max-width: 140px;
+          }
       }
+
+      
+           .logo {
+    text-align: center;
+}
+
+.main-logo {
+    width: 260px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Text below logo */
+.logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffb347;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    text-shadow: 
+        1px 1px 0 #000,
+        0 0 8px rgba(255, 179, 71, 0.7);
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text-header {
+    margin-left: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffb347;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top:25px;
+}
+
+/* ===== GENERATOR SECTION ===== */
+.generator-section {
+    padding: 60px 0;
+    background: #f7f9fc;
+}
+
+@media (max-width: 1024px){
+      .logo-area img {
+            width: 193px;
+            filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff) drop-shadow(0 0 6px #fff);
+            height:154px;
+                margin-left: -46px;
+                margin-top:25px
+
+        }
+
+    .logo-text-header {
+    margin-left: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffb347;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    
+}
+.top-info{
+    display:flex;
+    justify-content:space-between;
+    padding-left:13pc;
+    padding-right:7pc;
+}
+
    </style>
 </head>
 
@@ -553,12 +652,16 @@
                      <a href="index.html">
                         <img src="images/logo12.png" alt="B.R. Metal & Gen Set Logo">
                      </a>
+                                                     <!-- NEW TEXT -->
+                                <div class="logo-text-header">
+                                    B.R. METALS & GEN. SET
+                                </div>
                   </div>
                   <div class="col-lg-9 col-md-12 pull-right">
                      <ul class="top-info unstyled">
                         <li><span class="info-icon"><i class="icon icon-phone3"></i></span>
                            <div class="info-wrapper">
-                              <p class="info-title">24/7 Response Time</p>
+                              <p class="info-title">Phone</p>
                               <p class="info-subtitle">(+91) 98550-20522, 99884-48188</p>
                            </div>
                         </li>
@@ -578,11 +681,13 @@
          <div class="site-nav-inner site-navigation navigation navdown">
             <div class="container">
                <nav class="navbar navbar-expand-lg">
-                  <!-- Logo inside navbar for mobile/tablet -->
+                  <!-- Logo inside navbar for mobile/tablet with brand text added between logo and toggler -->
                   <div class="navbar-brand-mobile d-lg-none">
                      <a href="index.html" class="mobile-logo-link">
-                        <img src="images/logo12.png" alt="Logo" class="mobile-logo-img" style="max-height: 90px; width: 175px;">
+                        <img src="images/logo12.png" alt="Logo" class="mobile-logo-img" style="max-height: 90px; width: 105px;">
                      </a>
+                     <!-- NEW: B.R. METALS & GEN. SET text added between logo and toggler on mobile/tablet - matching index.html -->
+                     <span class="mobile-brand-text">B.R. METALS & GEN. SET</span>
                   </div>
                   
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -627,7 +732,7 @@
    </div>
 
    <!-- Banner area with enhanced overlay for text visibility -->
-   <div class="banner-area" id="banner-area" style="background-image:url(images/background-img9.png);">
+   <div class="banner-area" id="banner-area" style="background-image:url(images/backgroundimg123.png);">
       <div class="container">
          <div class="row justify-content-center">
             <div class="col">

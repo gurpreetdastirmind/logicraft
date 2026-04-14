@@ -231,11 +231,16 @@
          background: #b71c1c;
          color: #fff;
       }
+
       
-      .logo-area img{
-         width:115%;
-         filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff) drop-shadow(0 0 6px #fff);
-      }
+      
+          .logo-area img {
+    width: 193px;
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff) drop-shadow(0 0 6px #fff);
+    height: 154px;
+    margin-left: -46px;
+    margin-top: 25px;
+}
       
       /* ===== IMPROVED FOOTER LOGO STYLES - MATCHING REFERENCE IMAGES ===== */
       .footer-logo {
@@ -429,6 +434,143 @@
     }
 }
 
+         .logo {
+    text-align: center;
+}
+
+.main-logo {
+    width: 260px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Text below logo */
+.logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffb347;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    text-shadow: 
+        1px 1px 0 #000,
+        0 0 8px rgba(255, 179, 71, 0.7);
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text-header {
+    margin-left: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffb347;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top:25px;
+}
+
+/* ===== GENERATOR SECTION ===== */
+.generator-section {
+    padding: 60px 0;
+    background: #f7f9fc;
+}
+
+@media (max-width: 1024px){
+      .logo-area img {
+            width: 193px;
+            filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff) drop-shadow(0 0 6px #fff);
+            height:154px;
+                margin-left: -46px;
+                margin-top:25px
+
+        }
+
+    .logo-text-header {
+    margin-left: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffb347;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    
+}
+.top-info{
+    display:flex;
+    justify-content:space-between;
+    padding-left:13pc;
+    padding-right:7pc;
+}
+
+/* ===== MOBILE FOOTER FIX ===== */
+@media (max-width: 768px) {
+
+    .footer-main .row {
+        display: block;
+    }
+
+    .footer-widget {
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 100%;
+        margin-bottom: 30px;
+        text-align: left;
+    }
+
+    .footer-logo img {
+        display: block;
+        margin: 0 auto 15px;
+    }
+
+    .footer-about p {
+        text-align: center;
+    }
+
+    .footer-widget .widget-title {
+        text-align: center;
+    }
+
+    .footer-widget .widget-title:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .list-dash {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .list-dash li {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .ts-contact-info {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .ts-contact-icon {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+
+    .ts-contact-content p {
+        font-size: 14px;
+        word-break: break-word;
+    }
+
+    /* FIX OVERFLOW ISSUE */
+    .footer-main {
+        overflow-x: hidden;
+    }
+}
 
    </style>
 </head>
@@ -454,19 +596,26 @@
                   <a href="index.html">
                      <img src="images/logo12.png" alt="B.R. Metal & Gen Set Logo">
                   </a>
+                   <div class="logo-text-header">
+                                    B.R. METALS & GEN. SET
+                                </div>
                </div>
 
                <div class="col-lg-9 col-md-12 pull-right">
                   <ul class="top-info unstyled">
                      <li>
-                        <span class="info-icon"><i class="icon icon-phone3"></i></span>
+                        <a href="https://wa.me/919855020522" target="_blank">
+    <span class="info-icon"><i class="icon icon-phone3"></i></span>
+</a>
                         <div class="info-wrapper">
-                           <p class="info-title">24/7 Response Time</p>
+                           <p class="info-title">Phone</p>
                            <p class="info-subtitle">(+91) 98550-20522, 99884-48188</p>
                         </div>
                      </li>
                      <li>
-                        <span class="info-icon"><i class="icon icon-envelope"></i></span>
+                       <a href="mailto:rajkumar37429@gmail.com">
+    <span class="info-icon"><i class="icon icon-envelope"></i></span>
+</a>
                         <div class="info-wrapper">
                            <p class="info-title">Send Your Query</p>
                            <p class="info-subtitle">rajkumar37429@gmail.com</p>
@@ -539,7 +688,7 @@
 
    </header>
 </div>
-      <div class="banner-area" id="banner-area" style="background-image:url(images/banner/banner5.jpg);">
+      <div class="banner-area" id="banner-area" style="background-image:url(images/backgroundimg123.png);">
          <div class="container">
             <div class="row justify-content-center">
                <div class="col">
@@ -863,7 +1012,7 @@
                                 <li><a href="contact.html">Contact Us</a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-4 col-md-12W footer-widget">
+                        <div class="col-lg-4 col-md-12 footer-widget">
                             <h3 class="widget-title">Company Locations</h3>
                             <div class="ts-contact-info"><span class="ts-contact-icon float-left"><i
                                         class="icon icon-map-marker2"></i></span>

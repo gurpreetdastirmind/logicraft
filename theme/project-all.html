@@ -1,921 +1,543 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-   <!--
-    Basic Page Needs
-    ==================================================
-    -->
-   <meta charset="utf-8">
-   <title>B.R. Metal & Gen Set- Technical Specifications | Industrial Engines</title>
-   <!--
-    Mobile Specific Metas
-    ==================================================
-    -->
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-   <!--
-    CSS
-    ==================================================
-    -->
-   <!-- Bootstrap-->
-   <link rel="stylesheet" href="css/bootstrap.min.css">
-   <!-- Animation-->
-   <link rel="stylesheet" href="css/animate.css">
-   <!-- Morris -->
-   <link rel="stylesheet" href="css/morris.css">
-   <!-- FontAwesome-->
-   <link rel="stylesheet" href="css/font-awesome.min.css">
-   <!-- Icon font-->
-   <link rel="stylesheet" href="css/icon-font.css">
-   <!-- Owl Carousel-->
-   <link rel="stylesheet" href="css/owl.carousel.min.css">
-   <!-- Owl Theme -->
-   <link rel="stylesheet" href="css/owl.theme.default.min.css">
-   <!-- Colorbox-->
-   <link rel="stylesheet" href="css/colorbox.css">
-   <!-- Template styles-->
-   <link rel="stylesheet" href="css/style.css">
-   <!-- Responsive styles-->
-   <link rel="stylesheet" href="css/responsive.css">
-   
-   <style>
-      /* Additional custom styles for Technical Specifications page */
-      .tech-spec-section {
-         padding: 60px 0;
-         background: #fff;
-      }
-      .spec-sidebar {
-         background: #f8f9fc;
-         border-radius: 10px;
-         padding: 30px 20px;
-         box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-         position: sticky;
-         top: 30px;
-      }
-      .spec-sidebar ul {
-         list-style: none;
-         padding-left: 0;
-         margin-bottom: 0;
-      }
-      .spec-sidebar ul li {
-         margin-bottom: 12px;
-         border-bottom: 1px solid #eef2f7;
-         padding-bottom: 12px;
-      }
-      .spec-sidebar ul li:last-child {
-         border-bottom: none;
-         margin-bottom: 0;
-         padding-bottom: 0;
-      }
-      .spec-sidebar ul li a {
-         font-size: 15px;
-         font-weight: 600;
-         color: #1e2a3e;
-         display: block;
-         padding: 6px 0 6px 25px;
-         position: relative;
-         transition: all 0.3s ease;
-         text-decoration: none;
-      }
-      .spec-sidebar ul li a:before {
-         content: "\f0da";
-         font-family: FontAwesome;
-         position: absolute;
-         left: 0;
-         top: 6px;
-         color: #e32219;
-         font-size: 14px;
-      }
-      .spec-sidebar ul li a:hover, .spec-sidebar ul li.active a {
-         color: #e32219;
-         padding-left: 30px;
-      }
-      .spec-sidebar ul li.active a:before {
-         color: #e32219;
-      }
-      .spec-content-area {
-         background: #fff;
-         border-radius: 10px;
-      }
-      .spec-title-main {
-         font-size: 32px;
-         font-weight: 700;
-         color: #1e2a3e;
-         margin-bottom: 25px;
-         position: relative;
-         padding-bottom: 15px;
-      }
-      .spec-title-main:after {
-         content: '';
-         width: 70px;
-         height: 3px;
-         background: #e32219;
-         position: absolute;
-         bottom: 0;
-         left: 0;
-      }
-      .engine-category {
-         background: #fef5f4;
-         border-left: 4px solid #e32219;
-         padding: 20px 25px;
-         margin: 30px 0;
-         border-radius: 8px;
-      }
-      .engine-category h3 {
-         font-size: 22px;
-         font-weight: 700;
-         margin-bottom: 15px;
-         color: #c0392b;
-      }
-      .hp-range {
-         font-size: 18px;
-         font-weight: 600;
-         color: #2c3e50;
-         margin-bottom: 10px;
-      }
-      .hp-range span {
-         color: #e32219;
-         font-size: 24px;
-         font-weight: 800;
-      }
-      .model-list {
-         list-style: none;
-         padding-left: 0;
-         margin-top: 15px;
-         display: flex;
-         flex-wrap: wrap;
-         gap: 10px;
-      }
-      .model-list li {
-         background: #fff;
-         border: 1px solid #e0e6ed;
-         padding: 6px 18px;
-         border-radius: 30px;
-         font-size: 13px;
-         font-weight: 500;
-         color: #1e2a3e;
-      }
-      .spec-table {
-         width: 100%;
-         margin: 25px 0;
-         border-collapse: collapse;
-         background: #fff;
-         border-radius: 12px;
-         overflow: hidden;
-         box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      }
-      .spec-table th {
-         background: #1e2a3e;
-         color: #fff;
-         padding: 12px 15px;
-         font-weight: 600;
-         font-size: 14px;
-      }
-      .spec-table td {
-         padding: 10px 15px;
-         border-bottom: 1px solid #eef2f7;
-         color: #4a627a;
-         font-size: 14px;
-      }
-      .spec-table tr:last-child td {
-         border-bottom: none;
-      }
-      .badge-spec {
-         background: #eef2f9;
-         display: inline-block;
-         padding: 6px 16px;
-         border-radius: 30px;
-         font-weight: 600;
-         font-size: 13px;
-         color: #e32219;
-         margin-bottom: 20px;
-      }
-      .info-note {
-         background: #e8f4fd;
-         padding: 18px 22px;
-         border-radius: 10px;
-         margin-top: 30px;
-      }
-      .two-column-layout {
-         display: flex;
-         gap: 40px;
-         flex-wrap: wrap;
-      }
-      .left-nav-col {
-         flex: 0 0 280px;
-      }
-      .right-content-col {
-         flex: 1;
-      }
-      @media (max-width: 991px) {
-         .two-column-layout {
-            flex-direction: column;
-         }
-         .left-nav-col {
-            flex: auto;
-            width: 100%;
-         }
-         .spec-sidebar {
-            position: static;
-         }
-      }
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>B.R. Metal & Gen Set | Industrial Engine Solutions</title>
 
-      
-      .logo-area img{
-         width:115%;
-         filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff) drop-shadow(0 0 6px #fff);
-      }
-      
-      /* ===== IMPROVED FOOTER LOGO STYLES - MATCHING REFERENCE IMAGES ===== */
-      .footer-logo {
-          margin-bottom: 20px;
-      }
-      
-      .footer-logo img {
-          max-width: 210px;
-          height: auto;
-          transition: all 0.3s ease;
-            filter:drop-shadow(0 0 2px #fff)
-        drop-shadow(0 0 4px #fff)
-        drop-shadow(0 0 6px #fff);
-      }
-      
-      /* Alternative if logo has dark background - ensure white/light appearance */
-      .footer .footer-logo {
-          display: inline-block;
-      }
-      
-      /* For better visibility, add subtle text logo fallback */
-      .footer-logo-text {
-          display: none;
-      }
-      
-      /* Ensure footer logo stands out against dark background */
-      .footer-main {
-          background: #0a2540;
-      }
-      
-      /* Additional style to match the reference image design */
-      .footer-about p {
-          color: #cbd5e0;
-          line-height: 1.6;
-          margin-top: 15px;
-      }
-      
-      /* Quick Links styling to match reference */
-      .footer-widget .list-dash li a {
-          color: #cbd5e0;
-          transition: all 0.3s ease;
-      }
-      
-      .footer-widget .list-dash li a:hover {
-          color: #ffb347;
-          padding-left: 5px;
-      }
-      
-      /* Company Locations styling improvement */
-      .footer-widget .ts-contact-info {
-          margin-bottom: 20px;
-      }
-      
-      .footer-widget .ts-contact-content p {
-          color: #cbd5e0;
-      }
-      
-      .footer-widget .ts-contact-title {
-          color: #fff;
-          font-size: 16px;
-          font-weight: 600;
-          margin-bottom: 5px;
-      }
-      
-      /* Subscribe button styling */
-      .newsletter-form .btn-primary {
-          background: #ffb347;
-          border: none;
-          color: #1e2f3e;
-      }
-      
-      .newsletter-form .btn-primary:hover {
-          background: #ff9f1c;
-      }
-      
-      /* Widget title styling */
-      .footer-widget .widget-title {
-          color: #fff;
-          font-weight: 600;
-          margin-bottom: 25px;
-          position: relative;
-          padding-bottom: 12px;
-      }
-      
-      .footer-widget .widget-title:after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 50px;
-          height: 2px;
-          background: #ffb347;
-      }
-      
-      /* Ensure proper spacing in footer columns */
-      .footer-widget {
-          margin-bottom: 30px;
-      }
-      
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-          .footer-logo img {
-              max-width: 180px;
-          }
-      }
+  <!-- CSS Libraries -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/morris.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/icon-font.css">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/colorbox.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
 
-      /* HIDE LOGO AREA ON MOBILE */
-@media (max-width: 991px) {
-   .logo-area {
-      display: none !important;
-   }
-}
-
-/* MOBILE NAVBAR FIX */
-@media (max-width: 991px) {
-   .site-nav-inner .navbar {
+  <style>
+    /* ----- GLOBAL & FIXES (matching original style integrity) ----- */
+    body { overflow-x: hidden; font-family: 'Fira Sans', sans-serif; }
+    .logo-area img {
+      width: 193px;
+      filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff) drop-shadow(0 0 6px #fff);
+      height: 154px;
+      margin-left: -46px;
+      margin-top: 25px;
+    }
+    .logo { display: flex; align-items: center; }
+    .logo-text-header {
+      margin-left: 15px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffb347;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      margin-top: 25px;
+    }
+    .top-info { display: flex; justify-content: space-between; padding-left: 13pc; padding-right: 7pc; }
+    @media (max-width: 1024px) {
+      .logo-area img { width: 193px; height: 154px; margin-left: -46px; margin-top: 25px; }
+      .logo-text-header { margin-left: 15px; font-size: 20px; white-space: nowrap; }
+      .top-info { display: flex; justify-content: space-between; padding-left: 13pc; padding-right: 7pc; }
+    }
+    /* mobile adjustments */
+    @media (max-width: 991px) {
+      .logo-area { display: none !important; }
+      .top-info { display: none !important; }
+      .top-right-btn { display: none !important; }
+      .site-nav-inner .navbar { display: flex; justify-content: space-between; align-items: center; background: rgb(15 128 81); flex-wrap: wrap; }
+      .navbar-toggler { margin-left: auto; }
+      .navbar-collapse { width: 100%; background: #1a2a3a; margin-top: 10px; padding: 10px 0; }
+      .mobile-contact-bar { display: block !important; background: #000; color: #fff; padding: 8px 15px; text-align: center; font-size: 14px; }
+      .mobile-contact-bar .contact-number { color: #ffb347; font-weight: 700; text-decoration: none; }
+      .mobile-brand-text { display: inline-block; font-size: 15px; font-weight: 700; color: #ffb347; text-transform: uppercase; margin-left: 8px; vertical-align: middle; }
+    }
+    @media (min-width: 992px) { .mobile-contact-bar, .mobile-brand-text { display: none !important; } }
+    .mobile-contact-bar { display: none; background-color: #000; padding: 8px 15px; text-align: center; }
+    .footer-logo img { max-width: 210px; filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff); }
+    .footer-main { background: #0a2540; }
+    .footer-widget .widget-title:after { background: #ffb347; }
+    
+    /* ----- PROJECT/INDUSTRIAL ENGINE CUSTOM LAYOUT (Two column with dynamic content) ----- */
+    .projects-showcase {
+      padding: 60px 0;
+      background: #f7f9fc;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 45px;
+      position: relative;
+      color: #1e2a3e;
+    }
+    .section-title span {
+      color: #e32219;
+      display: block;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    /* two column layout */
+    .two-col-engine {
       display: flex;
-      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .engine-sidebar {
+      flex: 0 0 280px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      padding: 30px 20px;
+      align-self: start;
+    }
+    .engine-sidebar ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .engine-sidebar ul li {
+      margin-bottom: 12px;
+      border-bottom: 1px solid #eaeef5;
+      padding-bottom: 12px;
+    }
+    .engine-sidebar ul li:last-child { border-bottom: none; }
+    .engine-sidebar ul li a {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1e2a3e;
+      display: block;
+      padding: 6px 0 6px 25px;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .engine-sidebar ul li a:before {
+      content: "\f105";
+      font-family: FontAwesome;
+      position: absolute;
+      left: 0;
+      top: 6px;
+      color: #e32219;
+      font-weight: bold;
+    }
+    .engine-sidebar ul li.active a {
+      color: #e32219;
+      padding-left: 30px;
+    }
+    .engine-sidebar ul li.active a:before { color: #e32219; }
+    .engine-sidebar ul li a:hover { color: #e32219; padding-left: 30px; }
+    
+    .engine-content-main {
+      flex: 1;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+      padding: 30px;
+    }
+    .engine-category-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1e2a3e;
+      margin-bottom: 15px;
+      border-left: 5px solid #e32219;
+      padding-left: 20px;
+    }
+    .engine-desc {
+      color: #5a6e7c;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+    .product-card {
+      background: #fefefe;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+      transition: 0.25s ease;
+      border: 1px solid #edf2f7;
+    }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+    /* icon style for no-image panels */
+    .product-card-icon {
+      background: #f1f5f9;
+      height: 120px;
+      display: flex;
       align-items: center;
-      background: rgb(15 128 81);
-   }
-
-   .navbar-toggler {
-      margin-left: auto;
-   }
-
-   .navbar-collapse {
-      width: 100%;
-      background: #1a2a3a;
+      justify-content: center;
+      font-size: 48px;
+      color: #e32219;
+    }
+    .product-info { padding: 18px; }
+    .product-info h4 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #1e2a3e;
+    }
+    .product-info p { font-size: 14px; color: #4b5e77; margin: 0; line-height: 1.4; }
+    .product-info .spec-list {
       margin-top: 10px;
-      padding: 10px 0;
-   }
-
-   .mobile-logo-img {
-      max-height: 85px;
-      width: 175px;
-   }
-}
-
-/* HIDE BUTTON ON MOBILE */
-@media (max-width: 991px) {
-   .top-right-btn {
-      display: none !important;
-   }
-
-    .breadcrumb{
-            left: 8%;
-            top: 65%;
-          }
-
-         .site-nav-inner .container {
-              padding-left: 0px;
-              padding-right: 0px;
-          }
-}
-
-/* MOBILE CONTACT BAR */
-.mobile-contact-bar {
-    display: none;
-    background-color: #000;
-    color: #fff;
-    padding: 10px 15px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-    border-bottom: 1px solid #333;
-    z-index: 1000;
-    width: 100%;
-}
-
-.mobile-contact-bar .contact-number {
-    color: #ffb347;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.mobile-contact-bar .contact-number i {
-    margin-right: 5px;
-}
-
-/* SHOW ONLY ON MOBILE & TABLET */
-@media (max-width: 991px) {
-    .mobile-contact-bar {
-        display: block !important;
+      font-size: 13px;
+      color: #2c3e4e;
+      list-style: none;
+      padding-left: 0;
     }
-}
-
-/* HIDE ON DESKTOP */
-@media (min-width: 992px) {
-    .mobile-contact-bar {
-        display: none !important;
+    .product-info .spec-list li {
+      padding: 4px 0;
+      border-bottom: 1px dashed #e2e8f0;
     }
-}
+    .badge-tech {
+      display: inline-block;
+      background: #eef2ff;
+      color: #e32219;
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .info-highlight-light {
+      background: #fef5f4;
+      border-left: 4px solid #e32219;
+      padding: 18px 22px;
+      margin: 30px 0 20px;
+      border-radius: 10px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .feature-item {
+      background: #f8fafc;
+      padding: 12px 16px;
+      border-radius: 10px;
+    }
+    @media (max-width: 991px) {
+      .two-col-engine { flex-direction: column; }
+      .engine-sidebar { flex: auto; width: 100%; margin-bottom: 20px; }
+      .engine-content-main { padding: 20px; }
+      .engine-category-title { font-size: 24px; }
+    }
+    /* banner area override */
+    .banner-area {
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .banner-area:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.55);
+    }
+    .banner-heading { position: relative; z-index: 2; }
+    .breadcrumb { background: transparent; }
 
-   </style>
+    /* footer responsive */
+    .footer-main .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .footer-widget {
+      margin-bottom: 30px;
+    }
+    @media (max-width: 768px) {
+      .footer-main { padding: 40px 20px; text-align: center; }
+      .footer-widget { width: 100%; max-width: 100%; }
+      .footer-logo img { margin: 0 auto 15px; display: block; }
+      .ts-contact-info { display: block; text-align: center; }
+      .ts-contact-icon { float: none !important; margin-bottom: 8px; }
+      .ts-contact-content { text-align: center; }
+      .list-dash { padding-left: 0; }
+      .list-dash li { list-style: none; margin-bottom: 8px; }
+      .copyright { text-align: center; }
+    }
+    @media (max-width: 991px) { .footer-widget { text-align: center; } }
+    img { max-width: 100%; height: auto; }
+    body { overflow-x: hidden; }
+    .container { padding-left: 15px; padding-right: 15px; }
+    @media (max-width: 767px) {
+      .row { display: flex; flex-wrap: wrap; }
+      .col-lg-4, .col-md-6 { width: 100% !important; max-width: 100% !important; flex: 0 0 100% !important; }
+    }
+  </style>
 </head>
-
 <body>
+<div class="body-inner">
+  <!-- mobile contact strip -->
+  <div class="mobile-contact-bar">
+    <a href="tel:+919855020522" class="contact-number"><i class="fa fa-phone"></i> 98550-20522 , 99884-48188</a>
+  </div>
 
-   <div class="body-inner">
-
-      <div class="mobile-contact-bar">
-   <a href="tel:+919855020522" class="contact-number">
-      <i class="fa fa-phone"></i> 98550-20522 ,99884-48188
-   </a>
-</div>
-
-      <div class="site-top-2">
-   <header class="header nav-down" id="header-2">
-
-      <!-- LOGO AREA -->
+  <!-- ========== HEADER ========== -->
+  <div class="site-top-2">
+    <header class="header nav-down" id="header-2">
       <div class="container">
-         <div class="row">
-            <div class="logo-area clearfix">
-               <div class="logo col-lg-3 col-md-12">
-                  <a href="index.html">
-                     <img src="images/logo12.png" alt="B.R. Metal & Gen Set Logo">
-                  </a>
-               </div>
-
-               <div class="col-lg-9 col-md-12 pull-right">
-                  <ul class="top-info unstyled">
-                     <li>
-                        <span class="info-icon"><i class="icon icon-phone3"></i></span>
-                        <div class="info-wrapper">
-                           <p class="info-title">24/7 Response Time</p>
-                           <p class="info-subtitle">(+91) 98550-20522, 99884-48188</p>
-                        </div>
-                     </li>
-                     <li>
-                        <span class="info-icon"><i class="icon icon-envelope"></i></span>
-                        <div class="info-wrapper">
-                           <p class="info-title">Send Your Query</p>
-                           <p class="info-subtitle">rajkumar37429@gmail.com</p>
-                        </div>
-                     </li>
-                  </ul>
-               </div>
+        <div class="row">
+          <div class="logo-area clearfix">
+            <div class="logo col-lg-4 col-md-12 d-flex align-items-center">
+              <a href="index.html"><img src="images/logo12.png" alt="B.R. Metal & Gen Set Logo"></a>
+              <div class="logo-text-header">B.R. METALS & GEN. SET</div>
             </div>
-         </div>
+            <div class="col-lg-9 col-md-12 pull-right">
+              <ul class="top-info unstyled">
+                <li><span class="info-icon"><i class="icon icon-phone3"></i></span><div class="info-wrapper"><p class="info-title">Phone</p><p class="info-subtitle">(+91) 98550-20522, 99884-48188</p></div></li>
+                <li><span class="info-icon"><i class="icon icon-envelope"></i></span><div class="info-wrapper"><p class="info-title">Email</p><p class="info-subtitle">rajkumar37429@gmail.com</p></div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <!-- NAVBAR -->
       <div class="site-nav-inner site-navigation navigation navdown">
-         <div class="container">
-            <nav class="navbar navbar-expand-lg">
-
-               <!-- MOBILE LOGO -->
-               <div class="navbar-brand-mobile d-lg-none">
-                  <a href="index.html">
-                     <img src="images/logo12.png" class="mobile-logo-img">
-                  </a>
-               </div>
-
-               <!-- TOGGLER -->
-               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-                  <span class="navbar-toggler-icon">
-                     <i class="icon icon-menu"></i>
-                  </span>
-               </button>
-
-               <!-- MENU -->
-               <div class="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
-                        <ul class="navbar-nav">
-                           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                           <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                           <li class="nav-item dropdown">
-                              <a class="nav-link" href="#" data-toggle="dropdown">Industrial Engine<i class="fa fa-angle-down"></i></a>
-                              <ul class="dropdown-menu" role="menu">
-                                 <li><a href="project-all.html">Projects All</a></li>
-                                 <li><a href="#">Generator</a></li>
-                                 <li><a href="#">Motors</a></li>
-                                 <li><a href="#">Inverters</a></li>
-                                 <li><a href="#">Electricals things</a></li>
-                                 <li><a href="#">Technical Specification</a></li>
-                              </ul>
-                           </li>
-                           <li class="nav-item dropdown">
-                              <a class="nav-link" href="#" data-toggle="dropdown">Services<i class="fa fa-angle-down"></i></a>
-                              <ul class="dropdown-menu" role="menu">
-                                 <li><a href="service.html">Services All</a></li>
-                                 <li><a href="#" class="nav-service-link" data-service="preventive">Preventive Maintenance</a></li>
-                                 <li><a href="#" class="nav-service-link" data-service="valueAdded">Value Added Service</a></li>
-                                 <li><a href="#" class="nav-service-link" data-service="amcWarranty">AMC's & Warranty</a></li>
-                                 <li><a href="#" class="nav-service-link" data-service="installation">Installation</a></li>
-                                 <li><a href="#" class="nav-service-link" data-service="spareParts">Spare Parts</a></li>
-                              </ul>
-                           </li>
-                           <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                        </ul>
-                     </div>
-
-               <!-- BUTTON -->
-               <a href="contact.html" class="top-right-btn btn btn-primary">
-                  Request a Quote
-               </a>
-
-            </nav>
-         </div>
+        <div class="container">
+          <nav class="navbar navbar-expand-lg">
+            <div class="navbar-brand-mobile d-lg-none">
+              <a href="index.html"><img src="images/logo12.png" alt="Logo" class="mobile-logo-img" style="max-height: 70px; width: auto;"></a>
+              <span class="mobile-brand-text">B.R. METALS & GEN. SET</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+              <span class="navbar-toggler-icon"><i class="icon icon-menu"></i></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                <li class="nav-item dropdown"><a class="nav-link" href="#" data-toggle="dropdown">Industrial Engine<i class="fa fa-angle-down"></i></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="project-all.html">Projects All</a></li>
+                    <li><a href="#" class="engine-nav-link" data-engine="generator">Generator</a></li>
+                    <li><a href="#" class="engine-nav-link" data-engine="motors">Motors</a></li>
+                    <li><a href="#" class="engine-nav-link" data-engine="inverters">Inverters</a></li>
+                    <li><a href="#" class="engine-nav-link" data-engine="electrical">Electricals things</a></li>
+                    <li><a href="#" class="engine-nav-link" data-engine="techspec">Technical Specification</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown"><a class="nav-link" href="#" data-toggle="dropdown">Services<i class="fa fa-angle-down"></i></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="service.html">Services All</a></li>
+                    <li><a href="#" class="nav-service-link" data-service="preventive">Preventive Maintenance</a></li>
+                    <li><a href="#" class="nav-service-link" data-service="valueAdded">Value Added Service</a></li>
+                    <li><a href="#" class="nav-service-link" data-service="amcWarranty">AMC's & Warranty</a></li>
+                    <li><a href="#" class="nav-service-link" data-service="installation">Installation</a></li>
+                    <li><a href="#" class="nav-service-link" data-service="spareParts">Spare Parts</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+            <a href="contact.html" class="top-right-btn btn btn-primary">Request a Quote</a>
+          </nav>
+        </div>
       </div>
+    </header>
+  </div>
 
-   </header>
+  <!-- ========== BANNER ========== -->
+  <div class="banner-area" id="banner-area" style="background-image:url(images/background-img6.jpg);">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col">
+          <div class="banner-heading">
+            <h1 class="banner-title" id="dynamicBannerTitle">Industrial Engine</h1>
+            <ol class="breadcrumb">
+              <li>Home</li>
+              <li><a href="#" id="dynamicBreadcrumbLink">Industrial Engine</a></li>
+              <li id="dynamicBreadcrumbLast">Generator Solutions</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <section class="projects-showcase">
+    <div class="container">
+      <div class="two-col-engine">
+        <!-- LEFT SIDEBAR -->
+        <div class="engine-sidebar">
+          <h4 style="font-weight:700; border-left:4px solid #e32219; padding-left:15px; margin-bottom:25px;">Our Products</h4>
+          <ul id="engineSidebarList">
+            <li data-cat="generator" class="active"><a href="javascript:void(0)">Generator</a></li>
+            <li data-cat="motors"><a href="javascript:void(0)">Motors</a></li>
+            <li data-cat="inverters"><a href="javascript:void(0)">Inverters</a></li>
+            <li data-cat="electrical"><a href="javascript:void(0)">Electricals things</a></li>
+            <li data-cat="techspec"><a href="javascript:void(0)">Technical Specification</a></li>
+          </ul>
+          <div class="mt-4 pt-2" style="border-top:1px solid #e2e8f0;">
+            <p><i class="fa fa-map-marker"></i> 23, Street no 2, Gurudwara Gobindsar,<br>New Shimla Puri, Ludhiana -141003</p>
+            <p><i class="fa fa-phone"></i> 98550-20522 , 99884-48188</p>
+            <a href="contact.html" class="btn btn-sm" style="background:#e32219; color:#fff; border-radius:40px; padding:8px 20px;"><i class="fa fa-headphones"></i> Get Support</a>
+          </div>
+        </div>
+
+        <!-- RIGHT DYNAMIC CONTENT -->
+        <div class="engine-content-main" id="dynamicEngineContent">
+          <!-- GENERATOR PANEL (kept as original with images) -->
+          <div id="generatorPanel" class="engine-panel">
+            <div class="badge-tech">Power Generation Solutions</div>
+            <h2 class="engine-category-title">Generator Sets – Reliable Power Backup</h2>
+            <p class="engine-desc">Since 1990, B.R. Metal & Gen Set offers a complete range of diesel generators, soundproof DG sets, and industrial generators. Our generators are known for fuel efficiency, low noise, and robust performance for factories, hospitals, commercial complexes, and residential societies.</p>
+            <div class="product-grid">
+              <div class="product-card"><img src="images/Kirloskar soundproof diesel generator.png" alt="Kirloskar Generator"><div class="product-info"><h4>Kirloskar Soundproof</h4><p>25 kVA to 250 kVA, low noise canopy, ideal for IT parks & hospitals.</p></div></div>
+              <div class="product-card"><img src="images/Cummins SilentPower diesel generator in focus.png" alt="Cummins Generator"><div class="product-info"><h4>Cummins Silent Power</h4><p>Heavy duty, long run hours, advanced control panel, IS:10000 certified.</p></div></div>
+              <div class="product-card"><img src="images/Industrial-generator-setup-and-tools.png" alt="Industrial Gen"><div class="product-info"><h4>Industrial Generators</h4><p>Open type & enclosed, from 15 kVA to 1500 kVA, suitable for continuous load.</p></div></div>
+              <div class="product-card"><img src="images/background-img5.png" alt="Portable Gen"><div class="product-info"><h4>Portable Generators</h4><p>Compact, easy to transport, perfect for construction sites & outdoor events.</p></div></div>
+            </div>
+            <div class="info-highlight-light"><p><strong>✔ 24/7 Support | ✔ Genuine Spares | ✔ On-site Installation | ✔ AMC Options</strong></p></div>
+          </div>
+
+          <!-- MOTORS PANEL (no images, detailed) -->
+          <div id="motorsPanel" class="engine-panel" style="display:none;">
+            <div class="badge-tech">Industrial & Commercial Motors – Premium Efficiency</div>
+            <h2 class="engine-category-title">High Efficiency Motors | 0.5 HP to 500 HP</h2>
+            <p class="engine-desc">We supply premium quality electric motors for diverse applications: agriculture, pumps, compressors, conveyors, industrial machinery, and HVAC systems. Our motors deliver energy efficiency, rugged durability, and full compliance with IS & IEC standards. Trusted brands include ABB, Siemens, Crompton, and our domestic high-torque series.</p>
+            <div class="product-grid">
+              <div class="product-card"><div class="product-card-icon"><i class="fa fa-cogs"></i></div><div class="product-info"><h4>Three Phase Induction</h4><p>IE2/IE3 efficiency, foot/flange mount, 0.5HP to 500HP</p><ul class="spec-list"><li>Voltage: 415V, 50Hz</li><li>IP55 protection, Class F</li><li>IS 12615, BEE Star</li></ul></div></div>
+              <div class="product-card"><div class="product-card-icon"><i class="fa fa-bolt"></i></div><div class="product-info"><h4>Single Phase Motors</h4><p>Domestic pumps, coolers, small machinery</p><ul class="spec-list"><li>0.25HP to 10HP, 230V</li><li>Capacitor start/run</li><li>Low maintenance, high torque</li></ul></div></div>
+              <div class="product-card"><div class="product-card-icon"><i class="fa fa-gears"></i></div><div class="product-info"><h4>Brake & Geared Motors</h4><p>Precision control for hoists, cranes, conveyors</p><ul class="spec-list"><li>Brake torque up to 150Nm</li><li>Ratio 3:1 to 100:1</li><li>Encoder ready, instant holding</li></ul></div></div>
+              <div class="product-card"><div class="product-card-icon"><i class="fa fa-shield"></i></div><div class="product-info"><h4>Flameproof Motors</h4><p>Ex d / Ex nA for hazardous areas</p><ul class="spec-list"><li>1HP to 300HP, T3 to T5</li><li>Gas group IIA/IIB/IIC</li><li>Certified for petrochemical & mining</li></ul></div></div>
+            </div>
+            <div class="feature-grid"><div class="feature-item"><i class="fa fa-leaf"></i> <strong>IE3/IE4 ready</strong><br>Save up to 15% energy</div><div class="feature-item"><i class="fa fa-wrench"></i> <strong>Rewinding & Overhaul</strong><br>In-house repair workshop</div><div class="feature-item"><i class="fa fa-tachometer"></i> <strong>VFD Compatible</strong><br>Vector control ready</div><div class="feature-item"><i class="fa fa-check-circle"></i> <strong>IS/IEC Certified</strong><br>Quality assured</div></div>
+            <div class="info-highlight-light"><p><strong>⚙️ Premium brands:</strong> ABB, Siemens, Crompton, Marathon. 12-24 months warranty, on-site installation, vibration analysis, and motor control centers (MCC).</p></div>
+          </div>
+
+          <!-- INVERTERS PANEL - NO IMAGES, ENHANCED INFO -->
+          <div id="invertersPanel" class="engine-panel" style="display:none;">
+            <div class="badge-tech">Power Backup & Energy Efficiency – Pure Sine Wave</div>
+            <h2 class="engine-category-title">Inverters & UPS Systems | 1 kVA to 100 kVA</h2>
+            <p class="engine-desc">Ensure uninterrupted power for home, office, and industrial automation with our advanced inverter solutions. We provide pure sine wave inverters, solar hybrid inverters, and online UPS systems with smart battery management, low total harmonic distortion (THD <3%), and high overload capacity. Ideal for sensitive electronics, servers, medical equipment, and residential use.</p>
+            <div class="product-grid">
+              <div class="product-card"><div class="product-card-icon"><i class="fa fa-home"></i></div><div class="product-info"><h4>Home Inverter (Pure Sine Wave)</h4><p>1 kVA to 10 kVA, intelligent LCD display, fast charging, ultra-quiet operation.</p><ul class="spec-list"><li>Input: 120V-280V wide range</li><li>Transfer time <10ms</li><li>Smart fan & battery deep discharge protection</li></ul></div></div>
+              <div class="product-card"><div class="product-card-icon"><i class="fa fa-sun-o"></i></div><div class="product-info"><h4>Solar Hybrid Inverter</h4><p>Grid-interactive, solar priority mode, compatible with lithium & tubular batteries.</p><ul class="spec-list"><li>MPPT charge controller (up to 99% efficiency)</li><li>Power range: 3 kVA to 50 kVA</li><li>Real-time monitoring, energy saving up to 40%</li></ul></div></div>
+              <div class="product-card"><div class="product-card-icon"><i class="fa fa-database"></i></div><div class="product-info"><h4>Online UPS (Double Conversion)</h4><p>10 kVA to 100 kVA, zero transfer time, pure sine wave output for critical loads.</p><ul class="spec-list"><li>Input power factor >0.99, efficiency up to 94%</li><li>Parallel redundancy (N+X) capability</li><li>Isolated output, SNMP card optional</li></ul></div></div>
+              <div class="product-card"><div class="product-card-icon"><i class="fa fa-battery-full"></i></div><div class="product-info"><h4>Battery Solutions</h4><p>Complete range: Tubular, SMF, Lithium-ion batteries for long backup.</p><ul class="spec-list"><li>Battery capacity: 40Ah to 200Ah</li><li>Low maintenance & deep cycle</li><li>Battery racks & monitoring included</li></ul></div></div>
+            </div>
+            <div class="feature-grid">
+              <div class="feature-item"><i class="fa fa-flash"></i> <strong>Pure Sine Wave Output</strong><br>THD <3%, safe for electronics</div>
+              <div class="feature-item"><i class="fa fa-solar-panel"></i> <strong>Solar Ready</strong><br>Hybrid models with MPPT</div>
+              <div class="feature-item"><i class="fa fa-clock-o"></i> <strong>Fast Charging</strong><br>Advanced PWM / MPPT tech</div>
+              <div class="feature-item"><i class="fa fa-shield"></i> <strong>Protections</strong><br>Short circuit, overload, deep discharge</div>
+            </div>
+            <div class="info-highlight-light"><p><strong>🔋 Complete power backup solutions:</strong> We supply, install, and maintain inverters/UPS with long-life batteries. Annual maintenance contracts (AMC) available. Free site survey for commercial installations. Brands: Luminous, Microtek, Sukam, and industrial-grade Statron.</p></div>
+          </div>
+
+          <!-- ELECTRICALS THINGS PANEL - NO IMAGES, DETAILED ELECTRICAL COMPONENTS -->
+          <div id="electricalPanel" class="engine-panel" style="display:none;">
+            <div class="badge-tech">Complete Electrical Infrastructure – Panels, Cables, Switchgears</div>
+            <h2 class="engine-category-title">Electricals things | Panels, Cables, Switchgears & Earthing</h2>
+            <p class="engine-desc">Under the leadership of Mr. Rajkumar (Raju), we provide end-to-end electrical components and turnkey solutions: LT panels, control panels, changeover switches, distribution boards, industrial cables, connectors, switchgears, and lighting systems. Our products ensure safety, longevity, and full compliance with IS/IEC standards. We also specialize in panel designing, short circuit analysis, and electrical troubleshooting 24/7.</p>
+            <div class="product-grid">
+              <div class="product-card"><div class="product-card-icon"><i class="fa fa-tachometer"></i></div><div class="product-info"><h4>Control & Distribution Panels</h4><p>AMF/auto mains failure panels, MCC, PCC, APFC panels, PLC-based automation.</p><ul class="spec-list"><li>Voltage up to 11kV, current up to 3000A</li><li>IP54/IP65 enclosures, powder coated</li><li>Customized as per load requirement</li></ul></div></div>
+              <div class="product-card"><div class="product-card-icon"><i class="fa fa-plug"></i></div><div class="product-info"><h4>Power & Control Cables</h4><p>Copper/Aluminum, PVC/XLPE insulated, fire retardant, armoured / unarmoured.</p><ul class="spec-list"><li>Size: 1 sqmm to 400 sqmm</li><li>Voltage grade: 1.1kV, 3.3kV, 11kV</li><li>ISI marked, house wiring & industrial</li></ul></div></div>
+              <div class="product-card"><div class="product-card-icon"><i class="fa fa-shield"></i></div><div class="product-info"><h4>Switchgears & Protection</h4><p>Schneider, Siemens, L&T, ABB – MCCB, MCB, contactors, relays, isolators, fuses.</p><ul class="spec-list"><li>Breaking capacity up to 100kA</li><li>Thermal magnetic / electronic release</li><li>Star-delta starters, soft starters, VFDs</li></ul></div></div>
+              <div class="product-card"><div class="product-card-icon"><i class="fa fa-tree"></i></div><div class="product-info"><h4>Earthing & Lightning Protection</h4><p>Chemical earthing, copper bonded rods, GI strips, lightning arresters, surge protection.</p><ul class="spec-list"><li>Earth resistance <1 ohm guaranteed</li><li>Maintenance free earthing</li><li>Strictly as per IS 3043</li></ul></div></div>
+            </div>
+            <div class="feature-grid">
+              <div class="feature-item"><i class="fa fa-bolt"></i> <strong>24/7 Electrical Troubleshooting</strong><br>Emergency breakdown support</div>
+              <div class="feature-item"><i class="fa fa-dashboard"></i> <strong>Panel Designing & Fabrication</strong><br>Customized as per drawing</div>
+              <div class="feature-item"><i class="fa fa-line-chart"></i> <strong>Short Circuit Analysis</strong><br>Coordination studies & safety audit</div>
+              <div class="feature-item"><i class="fa fa-wrench"></i> <strong>Installation & Commissioning</strong><br>End-to-end electrical projects</div>
+            </div>
+            <div class="info-highlight-light"><p><strong>⚡ One-stop electrical solution:</strong> From HT/LT panels to cable laying, earthing, and switchgear installation. We also provide annual maintenance contracts (AMC) for industrial electrical setups. Trusted by factories, malls, hospitals, and residential complexes across North India.</p></div>
+          </div>
+
+          <!-- TECHNICAL SPECIFICATION PANEL (unchanged) -->
+          <div id="techspecPanel" class="engine-panel" style="display:none;">
+            <div class="badge-tech">Detailed Technical Data</div>
+            <h2 class="engine-category-title">Technical Specifications – Performance at a Glance</h2>
+            <p class="engine-desc">Access standard technical parameters for our generators, motors, inverters and electrical components. Below data represents benchmark performance for informed decision making.</p>
+            <div style="overflow-x:auto;">
+              <table class="table table-bordered" style="background:#fff;">
+                <thead style="background:#e32219; color:white;"><tr><th>Equipment</th><th>Power Range</th><th>Voltage/Frequency</th><th>Efficiency</th><th>Standards</th></tr></thead>
+                <tbody>
+                  <tr><td>Diesel Generator</td><td>15 kVA - 1500 kVA</td><td>415V ±5%, 50Hz</td><td>≥ 92%</td><td>ISO 8528, CPCB-II</td></tr>
+                  <tr><td>Electric Motors</td><td>0.5 HP - 500 HP</td><td>230V/415V, 50Hz</td><td>IE2 / IE3</td><td>IS 12615, BEE Star</td></tr>
+                  <tr><td>Solar/Home Inverter</td><td>1 kVA - 100 kVA</td><td>48V/96V/230V</td><td>Pure Sine Wave >90%</td><td>IEC 62040</td></tr>
+                  <tr><td>Control Panels</td><td>Up to 3000A</td><td>415V / 11kV</td><td>IP54/65</td><td>IEC 61439</td></tr>
+                </tbody>
+               </table>
+            </div>
+            <div class="info-highlight-light mt-3"><p><strong>📐 Additional spec sheets available on request:</strong> Engine RPM, Fuel consumption, Noise level (75 dB(A) for soundproof), Motor frame sizes, Inverter THD <3%, and cable sizing charts.</p><p class="mt-2">✅ All equipment undergoes rigorous testing before dispatch. ✅ Warranty & after-sales support included.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="footer-main bg-overlay">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-12 footer-widget footer-about"><div class="footer-logo"><img src="images/logo12.png" alt=""></div><p>B.R. Metal & Gen Set is a trusted name in generator solutions, industrial engines, and electrical equipment since 1990. We provide reliable power backup, installation, maintenance, and genuine spare parts with 24/7 support.</p></div>
+          <div class="col-lg-4 col-md-12 footer-widget"><h3 class="widget-title">Quick Links</h3><ul class="list-dash"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="service.html">Our Services</a></li><li><a href="project-all.html">Industrial Engine</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+          <div class="col-lg-4 col-md-12 footer-widget"><h3 class="widget-title">Company Locations</h3><div class="ts-contact-info"><span class="ts-contact-icon float-left"><i class="icon icon-map-marker2"></i></span><div class="ts-contact-content"><h3 class="ts-contact-title">Address</h3><p>23, Street no 2, Gurudwara Gobindsar,<br>New Shimla Puri, Ludhiana - 141003</p></div></div><div class="ts-contact-info last"><span class="ts-contact-icon float-left"><i class="icon icon-envelope"></i></span><div class="ts-contact-content"><h3 class="ts-contact-title">Email</h3><p>rajkumar37429@gmail.com</p></div></div><div class="ts-contact-info"><span class="ts-contact-icon float-left"><i class="icon icon-phone3"></i></span><div class="ts-contact-content"><h3 class="ts-contact-title">Phone</h3><p>98550-20522, 99884-48188, 81969-55100</p></div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="copyright"><div class="container"><div class="row"><div class="col-lg-6 col-md-12"><div class="copyright-info"><span>Copyright © 2026 a theme by <a href="https://astirmind.com">Astirmind Software Solutions</a></span></div></div></div></div></div>
+  </footer>
+  <div class="back-to-top affix" id="back-to-top"><button class="btn btn-primary" title="Back to Top"><i class="fa fa-angle-double-up"></i></button></div>
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+  <script type="text/javascript" src="js/jquery.counterup.min.js"></script>
+  <script type="text/javascript" src="js/waypoints.min.js"></script>
+  <script type="text/javascript" src="js/custom.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      function switchEngineCategory(category) {
+        $('.engine-panel').hide();
+        $('#' + category + 'Panel').fadeIn(300);
+        $('#engineSidebarList li').removeClass('active');
+        $('#engineSidebarList li[data-cat="' + category + '"]').addClass('active');
+        let bannerTitle = "Industrial Engine", breadcrumbLast = "", bgImage = "url(images/background-img6.jpg)";
+        if(category === 'generator') { bannerTitle = "Generator Solutions"; breadcrumbLast = "Generator"; bgImage = "url(images/backgroundimg123.png)"; }
+        else if(category === 'motors') { bannerTitle = "Industrial Motors"; breadcrumbLast = "Motors"; bgImage = "url(images/background-img5.png)"; }
+        else if(category === 'inverters') { bannerTitle = "Inverters & UPS"; breadcrumbLast = "Inverters"; bgImage = "url(images/Industrial-generator-setup-and-tools.png)"; }
+        else if(category === 'electrical') { bannerTitle = "Electricals Things"; breadcrumbLast = "Electricals"; bgImage = "url(images/generator11.jpeg)"; }
+        else if(category === 'techspec') { bannerTitle = "Technical Specs"; breadcrumbLast = "Technical Specification"; bgImage = "url(images/generator7.jpeg)"; }
+        $('#dynamicBannerTitle').text(bannerTitle);
+        $('#dynamicBreadcrumbLast').text(breadcrumbLast);
+        $('#banner-area').css('background-image', bgImage);
+        $('#dynamicBreadcrumbLink').text("Industrial Engine");
+      }
+      $('#engineSidebarList li').on('click', function(e){ e.preventDefault(); let cat = $(this).data('cat'); if(cat) switchEngineCategory(cat); });
+      $('.engine-nav-link').on('click', function(e){ e.preventDefault(); let engineVal = $(this).data('engine'); if(engineVal) switchEngineCategory(engineVal); $('html, body').animate({ scrollTop: $(".projects-showcase").offset().top - 80 }, 500); });
+      function goToServicePage(serviceId) { sessionStorage.setItem('openService', serviceId); window.location.href = 'service.html'; }
+      $('.nav-service-link').each(function(){
+        let txt = $(this).text().trim();
+        if(txt === "Preventive Maintenance") $(this).on('click', function(e){ e.preventDefault(); goToServicePage('preventive'); });
+        else if(txt === "Value Added Service") $(this).on('click', function(e){ e.preventDefault(); goToServicePage('valueAdded'); });
+        else if(txt === "AMC's & Warranty") $(this).on('click', function(e){ e.preventDefault(); goToServicePage('amcWarranty'); });
+        else if(txt === "Installation") $(this).on('click', function(e){ e.preventDefault(); goToServicePage('installation'); });
+        else if(txt === "Spare Parts") $(this).on('click', function(e){ e.preventDefault(); goToServicePage('spareParts'); });
+        else if(txt === "Services All") $(this).on('click', function(e){ e.preventDefault(); window.location.href = 'service.html'; });
+      });
+      switchEngineCategory('generator');
+    });
+  </script>
 </div>
-      
-      <div class="banner-area" id="banner-area" style="background-image:url(images/banner/banner1.jpg);">
-         <div class="container">
-            <div class="row justify-content-center">
-               <div class="col">
-                  <div class="banner-heading">
-                     <h1 class="banner-title">Technical Specifications</h1>
-                     <ol class="breadcrumb">
-                        <li>Home</li>
-                        <li><a href="#">Technical Specifications</a></li>
-                     </ol>
-                  </div>
-               </div>
-               <!-- Col end-->
-            </div>
-            <!-- Row end-->
-         </div>
-         <!-- Container end-->
-      </div>
-      <!-- Banner area end-->
-      
-      <!-- Technical Specifications Main Section - Navigation corrected exactly as per the image: OVERVIEW, GENERATOR, MOTORS, ELECTRICAL THINGS, INVERTERS, TECHNICAL SPECIFICATION -->
-      <section class="tech-spec-section" id="tech-spec-section">
-         <div class="container">
-            <div class="two-column-layout">
-               <!-- LEFT SIDE NAVIGATION - Corrected names matching image: OVERVIEW, GENERATOR, MOTORS, ELECTRICAL THINGS, INVERTERS, TECHNICAL SPECIFICATION -->
-               <div class="left-nav-col">
-                  <div class="spec-sidebar">
-                     <h4 style="font-weight:700; margin-bottom:25px; border-left: 4px solid #e32219; padding-left:15px;">Navigation</h4>
-                     <ul id="specNavList">
-                        <li data-target="overview"><a href="javascript:void(0)">OVERVIEW</a></li>
-                        <li data-target="generator"><a href="javascript:void(0)">GENERATOR</a></li>
-                        <li data-target="motors"><a href="javascript:void(0)">MOTORS</a></li>
-                        <li data-target="electricalThings"><a href="javascript:void(0)">ELECTRICAL THINGS</a></li>
-                        <li data-target="inverters"><a href="javascript:void(0)">INVERTERS</a></li>
-                        <li data-target="techspec" class="active"><a href="javascript:void(0)">TECHNICAL SPECIFICATION</a></li>
-                     </ul>
-                  </div>
-               </div>
-
-               <!-- RIGHT HAND DYNAMIC CONTENT - Updated with correct content for each navigation item -->
-               <div class="right-content-col">
-                  <div class="spec-content-area" id="dynamicSpecContent">
-                     
-                     <!-- TECHNICAL SPECIFICATION Content (Default visible) -->
-                     <div id="techspecContent" class="spec-pane">
-                        <span class="badge-spec">Engine Range</span>
-                        <h2 class="spec-title-main">TECHNICAL SPECIFICATIONS</h2>
-                        
-                        <!-- BSV Engines Section - as per image -->
-                        <div class="engine-category">
-                           <h3>BSV Engines</h3>
-                           <div class="hp-range">
-                              Power Range: <span>23HP to 265HP</span>
-                           </div>
-                           <p style="margin-top: 12px;">Advanced BS-V compliant engines with superior fuel efficiency, lower emissions, and high durability for industrial applications.</p>
-                           <ul class="model-list">
-                              <li>23HP</li>
-                              <li>35HP</li>
-                              <li>50HP</li>
-                              <li>75HP</li>
-                              <li>100HP</li>
-                              <li>125HP</li>
-                              <li>150HP</li>
-                              <li>180HP</li>
-                              <li>210HP</li>
-                              <li>240HP</li>
-                              <li>265HP</li>
-                           </ul>
-                        </div>
-                        
-                        <!-- BSIII Engines Section - as per image -->
-                        <div class="engine-category">
-                           <h3>BSIII Engines</h3>
-                           <div class="hp-range">
-                              Power Range: <span>23.5HP to 80HP</span>
-                           </div>
-                           <p style="margin-top: 12px;">Reliable BS-III engines ideal for construction equipment, agricultural machinery, and industrial use.</p>
-                           <ul class="model-list">
-                              <li>23.5HP</li>
-                              <li>30HP</li>
-                              <li>40HP</li>
-                              <li>50HP</li>
-                              <li>60HP</li>
-                              <li>75HP</li>
-                              <li>80HP</li>
-                           </ul>
-                        </div>
-                        
-                        <!-- Detailed Spec Table -->
-                        <table class="spec-table">
-                           <thead>
-                              <tr><th>Parameter</th><th>BSV Series</th><th>BSIII Series</th> </tr>
-                           </thead>
-                           <tbody>
-                              <tr><td>Emission Norm</td><td>BS-V / CEV Stage V</td><td>BS-III</td> </tr>
-                              <tr><td>Fuel System</td><td>Common Rail Direct Injection</td><td>Mechanical Fuel Injection</td> </tr>
-                              <tr><td>Cooling System</td><td>Liquid Cooled / Forced Circulation</td><td>Liquid Cooled</td> </tr>
-                              <tr><td>Aspiration</td><td>Turbocharged / Intercooled</td><td>Naturally Aspirated / Turbo</td> </tr>
-                              <tr><td>Applications</td><td>Heavy Duty, Generators, Construction</td><td>Agriculture, Light Industrial</td> </tr>
-                           </tbody>
-                         </table>
-                        
-                        <div class="info-note">
-                           <i class="fa fa-info-circle" style="color:#e32219; margin-right:10px;"></i>
-                           <strong>Note:</strong> Custom power ratings and configurations available upon request. Contact our team for detailed technical datasheets.
-                        </div>
-                     </div>
-                     
-                     <!-- OVERVIEW Content -->
-                     <div id="overviewContent" class="spec-pane" style="display:none;">
-                        <span class="badge-spec">Company Overview</span>
-                        <h2 class="spec-title-main">OVERVIEW</h2>
-                        <p>Established in 1990, Logicraft has been a trusted name in industrial engines, generators, and power solutions. We offer complete range of engines for construction, marine, agricultural, and power generation applications.</p>
-                        <p>Our commitment to quality, reliability, and customer service has made us a preferred partner for industries across India. With 30+ years of experience, we provide end-to-end solutions including sales, installation, AMC, and spare parts support.</p>
-                        <div class="engine-category">
-                           <h3>Our Presence</h3>
-                           <p>✓ 5000+ Happy Customers<br>✓ 1000+ Installations<br>✓ 24/7 Technical Support<br>✓ Genuine Spare Parts Availability</p>
-                        </div>
-                     </div>
-                     
-                     <!-- GENERATOR Content (new) - matches the GENERATOR nav item -->
-                     <div id="generatorContent" class="spec-pane" style="display:none;">
-                        <span class="badge-spec">Power Generation</span>
-                        <h2 class="spec-title-main">GENERATOR SETS</h2>
-                        <p>We offer a wide range of diesel generator sets for prime power, standby, and continuous applications. Our generators are built for reliability, fuel efficiency, and low noise operation.</p>
-                        <div class="engine-category">
-                           <h3>Generator Range</h3>
-                           <div class="hp-range">
-                              Power Range: <span>10 kVA to 500 kVA</span>
-                           </div>
-                           <ul class="model-list">
-                              <li>10 kVA - 30 kVA</li>
-                              <li>40 kVA - 75 kVA</li>
-                              <li>100 kVA - 200 kVA</li>
-                              <li>250 kVA - 500 kVA</li>
-                           </ul>
-                        </div>
-                        <div class="engine-category">
-                           <h3>Key Features</h3>
-                           <p>✓ AMF / Auto Start Panel<br>✓ Silent Enclosure Options<br>✓ Remote Monitoring Capability<br>✓ Low Fuel Consumption<br>✓ 24/7 Support & AMC Available</p>
-                        </div>
-                        <div class="info-note">
-                           <i class="fa fa-bolt" style="color:#e32219;"></i> Custom built generators for residential, commercial, and industrial sectors.
-                        </div>
-                     </div>
-                     
-                     <!-- MOTORS Content (new) - matches the MOTORS nav item -->
-                     <div id="motorsContent" class="spec-pane" style="display:none;">
-                        <span class="badge-spec">Industrial Motors</span>
-                        <h2 class="spec-title-main">ELECTRIC MOTORS</h2>
-                        <p>High-efficiency electric motors designed for industrial machinery, pumps, compressors, and HVAC systems. Available in various frame sizes and power ratings.</p>
-                        <div class="engine-category">
-                           <h3>Motor Range</h3>
-                           <div class="hp-range">
-                              Power Range: <span>0.5 HP to 500 HP</span>
-                           </div>
-                           <ul class="model-list">
-                              <li>IE2 Efficiency</li>
-                              <li>IE3 Premium Efficiency</li>
-                              <li>IE4 Super Premium</li>
-                              <li>Flameproof Motors</li>
-                              <li>Brake Motors</li>
-                           </ul>
-                        </div>
-                        <table class="spec-table">
-                           <thead><tr><th>Type</th><th>Voltage</th><th>Frame Size</th></tr></thead>
-                           <tbody>
-                              <tr><td>Single Phase</td><td>230V</td><td>63 to 132</td></tr>
-                              <tr><td>Three Phase</td><td>415V / 11kV</td><td>80 to 450</td></tr>
-                           </tbody>
-                        </table>
-                     </div>
-                     
-                     <!-- ELECTRICAL THINGS Content (new) - matches the ELECTRICAL THINGS nav item -->
-                     <div id="electricalThingsContent" class="spec-pane" style="display:none;">
-                        <span class="badge-spec">Electrical Components</span>
-                        <h2 class="spec-title-main">ELECTRICAL THINGS</h2>
-                        <p>Comprehensive range of electrical components for power distribution, control panels, and automation systems. All products comply with international safety standards.</p>
-                        <div class="engine-category">
-                           <h3>Product Range</h3>
-                           <ul class="model-list" style="display: flex; flex-direction: column; gap: 8px; background: transparent;">
-                              <li style="background:#fef5f4;">✓ Changeover Switches (Manual & Automatic)</li>
-                              <li style="background:#fef5f4;">✓ Control Panels & Distribution Boards</li>
-                              <li style="background:#fef5f4;">✓ MCB, MCCB, ACB, RCCB</li>
-                              <li style="background:#fef5f4;">✓ Busbars & Cable Trays</li>
-                              <li style="background:#fef5f4;">✓ Relays, Contactors & Timers</li>
-                              <li style="background:#fef5f4;">✓ Power Factor Correction Units</li>
-                           </ul>
-                        </div>
-                        <div class="info-note">
-                           <i class="fa fa-plug"></i> Complete electrical solutions for industrial and residential applications.
-                        </div>
-                     </div>
-                     
-                     <!-- INVERTERS Content (new) - matches the INVERTERS nav item -->
-                     <div id="invertersContent" class="spec-pane" style="display:none;">
-                        <span class="badge-spec">Power Backup</span>
-                        <h2 class="spec-title-main">INVERTERS & UPS SYSTEMS</h2>
-                        <p>Advanced inverter and UPS systems for uninterrupted power supply. Designed for homes, offices, data centers, and industrial applications.</p>
-                        <div class="engine-category">
-                           <h3>Inverter Range</h3>
-                           <div class="hp-range">
-                              Capacity: <span>1 kVA to 100 kVA</span>
-                           </div>
-                           <ul class="model-list">
-                              <li>Pure Sine Wave</li>
-                              <li>Solar Hybrid Inverters</li>
-                              <li>Online UPS</li>
-                              <li>Line Interactive UPS</li>
-                           </ul>
-                        </div>
-                        <table class="spec-table">
-                           <thead><tr><th>Model</th><th>Capacity</th><th>Application</th></tr></thead>
-                           <tbody>
-                              <tr><td>Home Series</td><td>1-5 kVA</td><td>Residential</td></tr>
-                              <tr><td>Pro Series</td><td>5-20 kVA</td><td>Commercial</td></tr>
-                              <tr><td>Industrial UPS</td><td>20-100 kVA</td><td>Industrial / Data Center</td></tr>
-                           </tbody>
-                        </table>
-                        <div class="info-note">
-                           <i class="fa fa-sun-o"></i> Solar hybrid inverters with MPPT technology available.
-                        </div>
-                     </div>
-                     
-                     <!-- Keeping additional hidden panes for consistency but not used in main nav -->
-                     <div id="bsvContent" class="spec-pane" style="display:none;"></div>
-                     <div id="constructionContent" class="spec-pane" style="display:none;"></div>
-                     <div id="marineContent" class="spec-pane" style="display:none;"></div>
-                     <div id="firefightingContent" class="spec-pane" style="display:none;"></div>
-                     <div id="auxpowerContent" class="spec-pane" style="display:none;"></div>
-                     <div id="servicesContent" class="spec-pane" style="display:none;"></div>
-                     <div id="testimonialContent" class="spec-pane" style="display:none;"></div>
-                     
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-
-       <!-- Footer start-->
-        <footer class="footer" id="footer">
-            <div class="footer-main bg-overlay">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-12 footer-widget footer-about">
-                            <div class="footer-logo">
-                                <img src="images/logo12.png" alt="">
-                            </div>
-                            <p>B.R. Metal & Gen Set is a trusted name in generator solutions, industrial engines, and
-                                electrical equipment since 1990. We provide reliable power backup, installation,
-                                maintenance, and genuine spare parts with 24/7 support.</p>
-
-
-                            <!-- <h3 class="widget-title">Subscribe Newsletter!</h3>
-                     <form class="newsletter-form" id="newsletter-form" action="#" method="post">
-                        <div class="form-group">
-                           <input class="form-control form-control-lg" id="newsletter-form-email" type="email" name="email" placeholder="Email "
-                              autocomplete="off">
-                           <button class="btn btn-primary"><i class="fa fa-paper-plane"></i></button>
-                        </div>
-                     </form> -->
-                        </div>
-                        <!-- About us end-->
-                        <div class="col-lg-4 col-md-12 footer-widget">
-                            <h3 class="widget-title">Quick Links</h3>
-                            <ul class="list-dash">
-                                <li><a href="home.html">Home</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="service.html">Our Services</a></li>
-                                <li><a href="project-all.html">Industrial Engine</a></li>
-                                <!-- <li><a href="team.html">Our Team</a></li> -->
-                                <!-- <li><a href="faq.html">FAQs</a></li> -->
-                                <!-- <li><a href="news-left-sidebar.html">Our Blog</a></li> -->
-                                <!-- <li><a href="news-right-sidebar.html">Why Need Agent?</a></li> -->
-                                <li><a href="gallery.html">Gallery</a></li>
-
-                                <li><a href="contact.html">Contact Us</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-4 col-md-12W footer-widget">
-                            <h3 class="widget-title">Company Locations</h3>
-                            <div class="ts-contact-info"><span class="ts-contact-icon float-left"><i
-                                        class="icon icon-map-marker2"></i></span>
-                                <div class="ts-contact-content">
-                                    <h3 class="ts-contact-title">Address</h3>
-                                    <p>23, Street no 2, Gurudwara Gobindsar,<br>New Shimla Puri, Ludhiana - 141003</p>
-                                </div>
-                                <!-- Contact content end-->
-                            </div>
-
-                            <div class="ts-contact-info last"><span class="ts-contact-icon float-left"><i
-                                        class="icon icon-envelope"></i></span>
-                                <div class="ts-contact-content">
-                                    <h3 class="ts-contact-title">Email Address</h3>
-                                    <p>rajkumar37429@gmail.com</p>
-                                </div>
-                                <!-- Contact content end-->
-                            </div>
-
-                            <div class="ts-contact-info"><span class="ts-contact-icon float-left"><i
-                                        class="icon icon-phone3"></i></span>
-                                <div class="ts-contact-content">
-                                    <h3 class="ts-contact-title">Phone Number</h3>
-                                    <p>98550-20522, 99884-48188, 81969-55100</p>
-                                </div>
-                                <!-- Contact content end-->
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- Content row end-->
-                </div>
-                <!-- Container end-->
-            </div>
-            <!-- Footer Main-->
-            <div class="copyright">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12">
-                            <div class="copyright-info"><span>Copyright © 2026 a theme by <a
-                                        href="https://astirmind.com">Astirmind Software Solutions</a></span></div>
-                        </div>
-                        <div class="col-lg-6 col-md-12">
-                            <!-- <div class="footer-social text-right">
-                      <ul>
-                         <li><a href="https://facebook.com"><i class="fa fa-facebook"></i></a></li>
-                         <li><a href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
-                         <li><a href="https://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
-                         <li><a href="https://github.com"><i class="fa fa-github"></i></a></li>
-                         <li><a href="https://instagram.com"><i class="fa fa-instagram"></i></a></li>
-                      </ul>
-                   </div> -->
-                        </div>
-                    </div>
-                    <!-- Row end-->
-                </div>
-                <!-- Container end-->
-            </div>
-            <!-- Copyright end-->
-        </footer>
-        <!-- Footer end-->
-
-      <div class="back-to-top affix" id="back-to-top" data-spy="affix" data-offset-top="10">
-         <button class="btn btn-primary" title="Back to Top"><i class="fa fa-angle-double-up"></i>
-            <!-- icon end-->
-         </button>
-         <!-- button end-->
-      </div>
-      <!-- End Back to Top-->
-
-      <!-- Javascript Files -->
-      <script type="text/javascript" src="js/jquery.js"></script>  
-      <script type="text/javascript" src="js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-      <script type="text/javascript" src="js/jquery.counterup.min.js"></script>
-      <script type="text/javascript" src="js/waypoints.min.js"></script>
-      <script type="text/javascript" src="js/jquery.colorbox.js"></script>   
-      <script type="text/javascript" src="js/custom.js"></script>
-      
-      <script>
-         $(document).ready(function(){
-            // Function to show specific spec pane
-            function showSpecPane(targetId) {
-               $('.spec-pane').hide();
-               $('#' + targetId + 'Content').fadeIn(300);
-               $('#specNavList li').removeClass('active');
-               $('#specNavList li[data-target="' + targetId + '"]').addClass('active');
-            }
-            
-            // Handle left sidebar navigation clicks
-            $('#specNavList li').on('click', function(e){
-               e.preventDefault();
-               var target = $(this).data('target');
-               if(target) {
-                  showSpecPane(target);
-               }
-            });
-            
-            // Default show Technical Specification
-            showSpecPane('techspec');
-         });
-      </script>
-
-   </div>
-   <!--Body Inner end-->
 </body>
-
 </html>

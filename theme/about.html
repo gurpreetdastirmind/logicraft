@@ -94,11 +94,13 @@
           color: #fff;
       }
 
-      
-      .logo-area img{
-         width:115%;
-         filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff) drop-shadow(0 0 6px #fff);
-      }
+      .logo-area img {
+    width: 193px;
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff) drop-shadow(0 0 6px #fff);
+    height: 154px;
+    margin-left: -46px;
+    margin-top: 25px;
+}
       
       /* ===== IMPROVED FOOTER LOGO STYLES - MATCHING REFERENCE IMAGES ===== */
       .footer-logo {
@@ -285,10 +287,24 @@
           .site-nav-inner .navbar .navbar-brand-mobile {
               display: flex;
               align-items: center;
+              gap: 10px;
           }
           
           .navbar .mobile-logo {
               display: block;
+          }
+          
+          /* NEW: Styling for mobile brand text (B.R. METALS & GEN. SET) - matching index.html */
+          .mobile-brand-text {
+              display: inline-block;
+              font-size: 25px;
+              font-weight: 700;
+              color: #ffb347;
+              letter-spacing: 1px;
+              text-transform: uppercase;
+              white-space: normal;
+              line-height: 1.2;
+              text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
           }
           
           .navbar-collapse {
@@ -314,7 +330,7 @@
           }
       }
       
-      /* Desktop navbar toggler hidden */
+      /* Desktop navbar toggler hidden and hide mobile brand text */
       @media (min-width: 992px) {
           .navbar-toggler {
               display: none;
@@ -322,6 +338,10 @@
           .site-nav-inner .navbar {
               display: flex;
               align-items: center;
+          }
+          /* Hide mobile brand text on desktop */
+          .mobile-brand-text {
+              display: none !important;
           }
       }
       
@@ -460,7 +480,388 @@
               padding: 3px 8px;
               font-size: 12px;
           }
+          .mobile-brand-text {
+              font-size: 14px;
+              max-width: 139px;
+          }
       }
+
+           .logo {
+    text-align: center;
+}
+
+.main-logo {
+    width: 260px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Text below logo */
+.logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffb347;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    text-shadow: 
+        1px 1px 0 #000,
+        0 0 8px rgba(255, 179, 71, 0.7);
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text-header {
+    margin-left: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffb347;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top:25px;
+}
+
+/* ===== GENERATOR SECTION ===== */
+.generator-section {
+    padding: 60px 0;
+    background: #f7f9fc;
+}
+
+@media (max-width: 1024px){
+      .logo-area img {
+            width: 193px;
+            filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff) drop-shadow(0 0 6px #fff);
+            height:154px;
+                margin-left: -46px;
+                margin-top:25px
+
+        }
+
+    .logo-text-header {
+    margin-left: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffb347;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    
+}
+.top-info{
+    display:flex;
+    justify-content:space-between;
+    padding-left:13pc;
+    padding-right:7pc;
+}
+
+@media (max-width: 768px) {
+  #main-container .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #main-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+}
+
+.percent-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart {
+    position: relative;
+    margin: 0 auto;
+}
+
+.chart canvas {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+@media (max-width: 767px) {
+    #tw-service-value .col-md-3 {
+        margin-bottom: 30px;
+    }
+}
+
+/* ================= MOBILE FOOTER FIX ================= */
+@media (max-width: 768px) {
+
+  .footer-main {
+    padding: 0px 15px;
+    text-align: center;
+  }
+
+  .footer-widget {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  /* Logo center */
+  .footer-logo {
+    text-align: center;
+  }
+
+  .footer-logo img {
+    max-width: 160px;
+    margin: 0 auto;
+  }
+
+  /* About text */
+  .footer-about p {
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 0 10px;
+  }
+
+  /* Titles center */
+  .widget-title {
+    text-align: center;
+  }
+
+  .footer-widget .widget-title:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Quick links */
+  .list-dash {
+    padding: 0;
+  }
+
+  .list-dash li {
+    list-style: none;
+    margin-bottom: 8px;
+  }
+
+  .list-dash li a {
+    display: inline-block;
+    padding: 5px 0;
+  }
+
+  /* Contact section FIX */
+  .ts-contact-info {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .ts-contact-icon {
+    float: none !important;
+    margin-bottom: 10px;
+  }
+
+  .ts-contact-content {
+    text-align: center;
+  }
+
+  .ts-contact-title {
+    font-size: 15px;
+  }
+
+  /* Copyright center */
+  .copyright {
+    text-align: center;
+  }
+
+  .copyright .row {
+    flex-direction: column;
+  }
+
+  .copyright-info {
+    margin-bottom: 10px;
+  }
+}
+
+/* FORCE FOOTER COLUMNS TO STACK PROPERLY */
+@media (max-width: 768px) {
+
+  .footer-main .row {
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  .footer-main .col-lg-4,
+  .footer-main .col-md-12 {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 100% !important;
+    display: block !important;
+  }
+
+  @media (max-width: 768px) {
+  .footer-main .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+  .footer-widget {
+    display: block !important;
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .footer-main .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.footer-main {
+  overflow: visible !important;
+}
+
+.footer-widget {
+  overflow: visible !important;
+}
+
+@media (max-width: 768px) {
+  .footer-widget {
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .footer-widget:last-child {
+    border-bottom: none;
+  }
+}
+
+/* ===== FIX: CORE VALUE SECTION MOBILE RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+
+  #ts-features-light .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #ts-features-light .col-lg-4,
+  #ts-features-light .col-md-4 {
+    width: 100%;
+    max-width: 100%;
+    flex: 100%;
+    margin-bottom: 30px;
+  }
+
+  .ts-feature-box {
+    padding: 20px 15px;
+  }
+
+  .ts-feature-info img {
+    max-width: 60px;
+    margin-bottom: 10px;
+  }
+
+  .ts-feature-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .ts-feature-info p {
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 0 10px;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+
+  .section-title span {
+    font-size: 14px;
+  }
+}
+
+/* ===== FIX: COMPANY PROGRESS RESPONSIVE ===== */
+
+/* Tablet view (2 per row) */
+@media (max-width: 991px) {
+  #tw-service-value .col-md-3 {
+    width: 50%;
+    max-width: 50%;
+    flex: 50%;
+    margin-bottom: 30px;
+  }
+}
+
+/* Mobile view (1 per row) */
+@media (max-width: 576px) {
+  #tw-service-value .col-md-3 {
+    width: 100%;
+    max-width: 100%;
+    flex: 100%;
+  }
+}
+
+/* Center everything properly */
+.percent-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fix chart alignment */
+.chart {
+  margin: 0 auto 10px;
+}
+
+/* Improve text spacing */
+#tw-service-value .column-title {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+@media (max-width: 576px) {
+  #tw-service-value .col-md-3 {
+    width: 25% !important;
+    max-width: 25% !important;
+    flex: 25% !important;
+  }
+
+  .chart {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .percent {
+    font-size: 12px;
+  }
+
+  #tw-service-value .column-title {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+    .percent-area .chart p {
+        top: 25px;
+    }
+}
+
+@media (max-width: 767px) {
+    .percent-area .chart p {
+        left: 18%;
+    }
+
+
    </style>
 
    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
@@ -493,13 +894,17 @@
                      <a href="index.html">
                         <img src="images/logo12.png" alt="Logicraft Logo">
                      </a>
+                      <!-- NEW TEXT -->
+                                <div class="logo-text-header">
+                                    B.R. METALS & GEN. SET
+                                </div>
                   </div>
                   <!-- logo end-->
                   <div class="col-lg-9 col-md-12 pull-right">
                      <ul class="top-info unstyled">
                         <li><span class="info-icon"><i class="icon icon-phone3"></i></span>
                               <div class="info-wrapper">
-                                 <p class="info-title">24/7 Response Time</p>
+                                 <p class="info-title">Phone</p>
                                  <p class="info-subtitle">(+91) 98550-20522, 99884-48188</p>
                               </div>
                            </li>
@@ -520,11 +925,13 @@
             <div class="site-nav-inner site-navigation navigation navdown">
                <div class="container">
                   <nav class="navbar navbar-expand-lg">
-                     <!-- Mobile logo inside navbar (visible only on mobile/tablet) -->
+                     <!-- Mobile logo inside navbar (visible only on mobile/tablet) with brand text added between logo and toggler - matching index.html -->
                      <div class="navbar-brand-mobile d-lg-none">
                         <a href="index.html" class="mobile-logo-link">
-                           <img src="images/logo12.png" alt="Logo" class="mobile-logo-img" style="max-height: 90px; width: 175px;">
+                           <img src="images/logo12.png" alt="Logo" class="mobile-logo-img" style="max-height: 90px; width: 105px;">
                         </a>
+                        <!-- NEW: B.R. METALS & GEN. SET text added between logo and toggler on mobile/tablet - exactly like index.html -->
+                        <span class="mobile-brand-text">B.R. METALS & GEN. SET</span>
                      </div>
                      
                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -639,7 +1046,7 @@
                   <a href="contact.html" class="top-right-btn btn btn-secondary">Contact Now</a>
                </div>
                   <!-- Col end-->
-                  <div class="col-lg-6 text-md-center mrt-40">
+                  <div class="col-lg-6 col-md-12 col-12 text-center mrt-40">
                      <img class="img-fluid" src="images/generator-img12.jpeg" alt="Work Circle">
                   </div>
                   <!-- Col end-->
@@ -790,7 +1197,7 @@
                                 <li><a href="contact.html">Contact Us</a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-4 col-md-12W footer-widget">
+                        <div class="col-lg-4 col-md-12 footer-widget">
                             <h3 class="widget-title">Company Locations</h3>
                             <div class="ts-contact-info"><span class="ts-contact-icon float-left"><i
                                         class="icon icon-map-marker2"></i></span>
@@ -902,6 +1309,45 @@
          window.location.href = 'service.html';
       }
       
+        // ✅ FIRST: initialize chart
+   $('.chart').easyPieChart({
+      barColor: '#e60023',
+      trackColor: '#f2f2f2',
+      scaleColor: false,
+      lineWidth: 6,
+      size: 140,
+      animate: 1000
+   });
+
+
+    // ✅ THEN: resize function
+   function resizeChart() {
+      var width = $(window).width();
+
+      $('.chart').each(function () {
+         var chart = $(this).data('easyPieChart');
+
+         if (chart) {
+            if (width < 576) {
+               chart.options.size = 90;
+            } else if (width < 768) {
+               chart.options.size = 120;
+            } else {
+               chart.options.size = 140;
+            }
+
+            chart.update($(this).attr('data-percent'));
+         }
+      });
+   }
+
+   // ✅ Run AFTER initialization
+   resizeChart();
+
+   $(window).on('resize', function () {
+      resizeChart();
+   });
+
       // Handle navbar dropdown service links
       $('.nav-item.dropdown .dropdown-menu a').each(function() {
          var linkText = $(this).text().trim();
@@ -964,5 +1410,4 @@
    });
    </script>
 </body>
-
 </html>
